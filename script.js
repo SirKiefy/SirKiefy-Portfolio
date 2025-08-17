@@ -423,7 +423,7 @@ public class PlayerCharacter : MonoBehaviour {
     const projectsData = {
         'wreck-it-relph': {
             title: "Don't Wreck It Relph (2024)",
-            summary: "A successful entry for the 2024 'Don't Wreck It Relph' game jam, securing #1 place overall. The game is a fast-paced arcade challenge where the player must protect a central structure from waves of enemies.",
+            summary: "A successful entry for the 2024 'Don't Wreck It Relph' game jam, securing #1 place overall. The game is a fast-paced arcade challenge where the player must make his way home without touching accidently touching and destorying everything around him to avoid getting in debt.",
             image: "https://i.imgur.com/vvDQsvu.jpeg",
             role: "I took on the roles of SFX Designer and programmer, creating all audio assets and contributing to the core gameplay mechanics and enemy AI.",
             technologies: ["Unity", "C#", "Audacity"],
@@ -438,9 +438,9 @@ public class PlayerCharacter : MonoBehaviour {
         },
         'project-patched': {
             title: "Project Patched (2023)",
-            summary: "A top-ranking entry for a 2023 game jam. 'Project Patched' is a puzzle-platformer where the player manipulates the game's own code by collecting 'patches' to overcome obstacles.",
+            summary: "A top-ranking entry for a 2023 game jam. 'Project Patched' is a first person shooter where the player must go through and fight off bugs in the game and make it to the server room to finish the game.",
             image: "https://i.imgur.com/7dxE1Tk.gif",
-            role: "My primary contributions were in SFX design, creating a dynamic soundscape that reacted to the player's in-game 'patching' abilities.",
+            role: "My primary contributions were in SFX design and 3d Modeling the weapons",
             technologies: ["Unity", "C#", "FMOD"],
             link: "#", // Placeholder link
             scores: [
@@ -457,7 +457,7 @@ public class PlayerCharacter : MonoBehaviour {
             title: "Pixel Art Showcase",
             process: "A collection of various pixel art creations, including characters, environments, and animations, focusing on atmospheric storytelling.",
             images: [
-                { id: 'px-standoff', src: 'https://i.imgur.com/H0fZ2Vi.png', title: 'The Standoff', date: '2024', tools: 'Pyxel Edit', tags: 'Pixel Art, Sci-Fi, Character', process: 'A scene depicting a tense standoff in a derelict spaceship corridor. Focused on atmospheric lighting from a single source.' },
+                { id: 'px-standoff', src: 'https://i.imgur.com/H0fZ2Vi.png', title: 'Mythical Lands Icon', date: '2023', tools: 'Pyxel Edit', tags: 'Pixel Art, process: 'A Icon with the mix of legendary items and dragons blood, and a colour matching the boarder, i wanted it to look professinal while using items from the mod so it has the same style.' },
                 { id: 'px-guardian', src: 'https://i.imgur.com/i3c2kM0.png', title: 'Forest Guardian', date: '2024', tools: 'Aseprite', tags: 'Pixel Art, Fantasy, Creature', process: 'Concept for a mythical forest creature. Used a limited color palette to evoke a sense of ancient magic.' },
                 { id: 'px-dusk', src: 'https://i.imgur.com/sA99nI4.png', title: 'City at Dusk', date: '2023', tools: 'Aseprite', tags: 'Pixel Art, Environment, Cityscape', process: 'A wide shot of a futuristic city as the sun sets. The goal was to create a sense of scale and wonder.' },
                 { id: 'px-knight', src: 'https://i.imgur.com/yG3a2YF.gif', title: 'Wandering Knight (Animation)', date: '2023', tools: 'Aseprite', tags: 'Pixel Art, Animation, Character', process: 'A simple walk cycle animation for a fantasy knight. Each frame was drawn by hand to ensure fluid motion.' },
