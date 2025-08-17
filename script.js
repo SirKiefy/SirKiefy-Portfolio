@@ -6,11 +6,15 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             preloader.classList.add('hidden');
             document.body.classList.add('loaded');
-            // Remove the preloader from the DOM after the transition ends
-            preloader.addEventListener('transitionend', () => {
-                preloader.remove();
-            });
-        }, 2000); // Minimum 2 seconds
+            
+            // Wait for the fade-out transition to finish (500ms in CSS) before removing the element.
+            // This is more reliable than using the 'transitionend' event.
+            setTimeout(() => {
+                if (preloader) {
+                    preloader.remove();
+                }
+            }, 500); // This duration should match the CSS transition time.
+        }, 2000); // Minimum 2 seconds for the preloader to be visible.
     }
 });
 
