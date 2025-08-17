@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio :: SirKiefy | SFX | World Builder | Artist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/glsl.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    
+    <!-- 3D Shader Demo -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[var(--color-bg-main)]">
+    <!-- Preloader Animation -->
+    <div id="preloader">
+        <div class="glitch-wrapper">
+            <div class="glitch" data-glitch="SirKiefy">SirKiefy</div>
+        </div>
+    </div>
+
+    <aside class="corner-elements">
+        <div class="corner-item top-left">SFX / World Builder / Artist</div>
+        <nav class="corner-item top-right flex items-center gap-4">
+            <a href="mailto:your-email@example.com"><i data-lucide="mail" class="w-4 h-4"></i> Email Me</a>
+            <span class="text-[var(--color-secondary)]">|</span>
+            <a href="https://www.artstation.com/sirkiefy" target="_blank"><i data-lucide="brush" class="w-4 h-4"></i> ArtStation</a>
+            <button id="theme-toggle" class="ml-4 text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">
+                <i data-lucide="sun" class="w-5 h-5" id="theme-sun-icon"></i>
+                <i data-lucide="moon" class="w-5 h-5 hidden" id="theme-moon-icon"></i>
+            </button>
+        </nav>
+        <div class="corner-item bottom-left">Status: Available for Hire</div>
+        <time class="corner-item bottom-right" id="current-time"></time>
+    </aside>
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg-content)] backdrop-blur-md">
+        <div class="header-decoration left"></div>
+        <div class="header-decoration right"></div>
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-lg font-bold tracking-widest uppercase font-mono text-[var(--color-foreground)]"><a href="#home" class="nav-link" data-page="home">SirKiefy</a></h1>
+            <nav id="main-nav" class="hidden md:flex space-x-8 nav-links">
+                <a class="nav-link" data-page="about">// About</a>
+                <a class="nav-link" data-page="projects">// Projects</a>
+                <a class="nav-link" data-page="sfx">// SFX</a>
+                <a class="nav-link" data-page="art">// Art</a>
+                <a class="nav-link" data-page="code">// Code</a>
+                <a class="nav-link" data-page="worldbuilding">// World Building</a>
+                <a class="nav-link" data-page="contact">// Contact</a>
+            </nav>
+            <button id="mobile-menu-toggle" class="md:hidden text-2xl text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors z-[110]">
+                <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-32 mb-12">
+        <div class="frame-container">
+            <div class="frame-corner frame-corner--top-left"></div>
+            <div class="frame-corner frame-corner--top-right"></div>
+            <div class="frame-corner frame-corner--bottom-left"></div>
+            <div class="frame-corner frame-corner--bottom-right"></div>
+            
+            <div class="main-container p-6 md:p-12">
+                <!-- HOME PAGE -->
+                <div id="page-home" class="page active">
+                    <section class="min-h-[70vh] flex flex-col justify-center items-center text-center content-section">
+                        <div class="max-w-4xl">
+                             <p class="font-mono text-lg text-[var(--color-accent)] mb-4 uppercase tracking-widest page-title">SFX | World Builder | Artist</p>
+                            <h2 class="text-5xl md:text-7xl font-black leading-tight text-[var(--color-foreground)]">Systematic Sound & Vision</h2>
+                            <p class="mt-6 text-xl text-[var(--color-secondary)] max-w-2xl mx-auto">Crafting immersive worlds through sound, code, and visuals. I specialize in bringing digital experiences to life.</p>
+                            <a href="#projects" class="corp-button mt-10 inline-block px-8 py-3 font-bold nav-link" data-page="projects">View My Projects</a>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- ABOUT PAGE -->
+                <div id="page-about" class="page">
+                     <section class="py-10 content-section">
+                        <h3 class="page-title text-2xl font-bold uppercase tracking-widest mb-8 font-mono">About</h3>
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                            <div class="lg:col-span-1">
+                                <img src="https://i.imgur.com/p5sTlwi.png" alt="Profile Picture" class="w-full h-auto border-2 border-[var(--border-color)]">
+                                <p class="font-mono text-center mt-4 text-lg">SirKiefy</p>
+                                <p class="font-mono text-center text-sm text-[var(--color-secondary)]"><span class="secret-trigger" title="Inspect Anomaly?">He/Him | They/Them</span></p>
+                                <div id="pronoun-secret" class="secret-panel text-center text-xs text-[var(--color-secondary)]"></div>
+                            </div>
+                            <div class="lg:col-span-2 space-y-8 prose-styles">
+                                <div>
+                                    <h4 class="section-title"><i data-lucide="user-round" class="w-5 h-5 mr-3"></i>// My Story</h4>
+                                    <p>From a young age, I was captivated by the worlds inside my family's computer. Games like Halo and the classic LEGO titles weren't just entertainment; they were intricate systems of art, sound, and logic that I was desperate to understand. This childhood curiosity drove me to pursue a degree in Game Design, turning a lifelong passion into a focused craft.</p>
+                                    <p>My core fascination lies in the architecture of a game—the "why" behind the design. I love writing comprehensive Game Design Documents (GDDs), creating deep lore, and building the foundational pillars that make a world feel real and immersive. For me, a game's <span class="secret-trigger" title="Inspect Anomaly?">//soul</span> is born from this deliberate, thoughtful construction.</p>
+                                    <div class="secret-panel">
+                                        <h5 class="font-mono text-lg anomaly-title">// CORE_FRAGMENT.DAT</h5>
+                                        <p class="text-[var(--color-secondary)] mt-2">A soul isn't a mystical object, but the emergent signature of a complex system. It's the ghost in the machine, the sum of all data, experiences, and choices that creates a unique, irreducible pattern. A universe without it is just an empty simulation, a render without a purpose.</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="section-title"><i data-lucide="gem" class="w-5 h-5 mr-3"></i>// My Dream Project</h4>
+                                    <p>My ultimate goal is to bring "Project Evergarden" to life—a "Noble Dark" fantasy RPG. A game that balances the grim realities of a fallen world with moments of genuine hope and heroism. It would feature deep, systemic gameplay where player choices have a tangible impact on the world state, combined with a rich narrative and unforgettable sound design. Think of the atmospheric depth of a FromSoftware title blended with the narrative agency of a classic BioWare RPG.</p>
+                                </div>
+                                <div>
+                                    <h4 class="section-title"><i data-lucide="gamepad-2" class="w-5 h-5 mr-3"></i>// Hobbies</h4>
+                                    <p>Outside of my university work and personal projects, I enjoy the strategic challenge of competitive esports. I'm also an avid Dungeons & Dragons player and Dungeon Master, frequently creating <span class="secret-trigger" title="Inspect Anomaly?">homebrew content</span> to share with my friends. This love for tabletop RPGs constantly fuels my passion for world-building and narrative design.</p>
+                                    <div class="secret-panel text-[var(--color-secondary)]">
+                                        <h5 class="font-mono text-lg anomaly-title">// HOMEBREW_LOG.DAT</h5>
+                                        <p class="mt-2">My homebrew creations often explore unique mechanics and thematic concepts. I enjoy designing new subclasses, monsters with interesting AI patterns, and self-contained adventure modules. Feel free to ask me about them!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- PROJECTS PAGE -->
+                <div id="page-projects" class="page">
+                    <section class="py-10 content-section">
+                        <h3 class="page-title text-2xl font-bold uppercase tracking-widest mb-8 font-mono">Projects</h3>
+                        <div class="project-gallery">
+                            <div class="project-card" data-project-id="wreck-it-relph">
+                                <img src="https://i.imgur.com/vvDQsvu.jpeg" alt="Don't Wreck It Relph Game Jam" class="w-full h-auto">
+                                <div class="p-4">
+                                    <h5 class="font-bold text-lg mb-2">Don't Wreck It Relph (2024)</h5>
+                                    <p class="text-sm text-[var(--color-secondary)] mb-4">A successful 2024 game jam entry. <span class="secret-trigger" title="Inspect Scores?">//View Scores</span></p>
+                                     <div class="secret-panel text-xs font-mono text-[var(--color-secondary)]">
+                                        <h6 class="font-bold mb-2 anomaly-title">// Score Breakdown</h6>
+                                        <ul class="space-y-1">
+                                            <li class="grid grid-cols-2 gap-2"><span>#1 Overall:</span> <span class="text-right">4.094</span></li>
+                                            <li class="grid grid-cols-2 gap-2"><span>#1 Presentation:</span> <span class="text-right">4.250</span></li>
+                                            <li class="grid grid-cols-2 gap-2"><span>#1 Playability:</span> <span class="text-right">4.125</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-card" data-project-id="project-patched">
+                                <img src="https://i.imgur.com/7dxE1Tk.gif" alt="Project Patched Game Jam" class="w-full h-auto">
+                                <div class="p-4">
+                                    <h5 class="font-bold text-lg mb-2">Project Patched (2023)</h5>
+                                    <p class="text-sm text-[var(--color-secondary)] mb-4">A 2023 game jam project. <span class="secret-trigger" title="Inspect Scores?">//View Scores</span></p>
+                                    <div class="secret-panel text-xs font-mono text-[var(--color-secondary)]">
+                                        <h6 class="font-bold mb-2 anomaly-title">// Score Breakdown</h6>
+                                        <ul class="space-y-1">
+                                            <li class="grid grid-cols-2 gap-2"><span>#1 Presentation:</span> <span class="text-right">4.111</span></li>
+                                            <li class="grid grid-cols-2 gap-2"><span>#2 Team Comp:</span> <span class="text-right">4.444</span></li>
+                                            <li class="grid grid-cols-2 gap-2"><span>#3 Overall:</span> <span class="text-right">3.244</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- PROJECT DETAIL PAGE (TEMPLATE) -->
+                <div id="page-project-detail" class="page">
+                    <section class="py-10 content-section">
+                        <button id="back-to-projects" class="corp-button inline-flex items-center gap-2 px-4 py-2 mb-8"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Projects</button>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="md:col-span-2">
+                                <img id="project-detail-image" src="" alt="Project detail view" class="w-full h-auto border-2 border-[var(--border-color)]">
+                            </div>
+                            <div class="md:col-span-1">
+                                <h3 id="project-detail-title" class="page-title text-3xl font-bold uppercase tracking-widest mb-4 font-mono"></h3>
+                                <p id="project-detail-summary" class="text-[var(--color-secondary)] mb-6"></p>
+                                <div class="space-y-6">
+                                    <div>
+                                        <h4 class="section-title text-sm">// My Role</h4>
+                                        <p id="project-detail-role" class="text-[var(--color-secondary)]"></p>
+                                    </div>
+                                    <div>
+                                        <h4 class="section-title text-sm">// Technologies</h4>
+                                        <div id="project-detail-tech" class="flex flex-wrap gap-2"></div>
+                                    </div>
+                                    <div>
+                                         <h4 class="section-title text-sm">// Jam Scores</h4>
+                                         <div id="project-detail-scores" class="text-xs font-mono text-[var(--color-secondary)] space-y-1"></div>
+                                    </div>
+                                     <div>
+                                         <a id="project-detail-link" href="#" target="_blank" class="corp-button inline-flex items-center gap-2 w-full justify-center text-center py-2 mt-4">
+                                             <i data-lucide="external-link" class="w-4 h-4"></i> View Project
+                                         </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- SFX PAGE -->
+                <div id="page-sfx" class="page">
+                    <section class="py-10 content-section">
+                        <div id="sfx-project-list">
+                            <h3 class="page-title text-2xl font-bold uppercase tracking-widest mb-8 font-mono">SFX Projects</h3>
+                            <div class="sfx-gallery">
+                                <!-- SFX project cards will be injected here -->
+                            </div>
+                        </div>
+                        <div id="sfx-project-detail" class="hidden">
+                            <!-- Selected SFX project detail will be injected here -->
+                        </div>
+                    </section>
+                </div>
+
+                <!-- ART PAGE -->
+                <div id="page-art" class="page">
+                    <section class="py-10 content-section">
+                        <h3 class="page-title text-2xl font-bold uppercase tracking-widest mb-8 font-mono">Art</h3>
+                        
+                        <!-- Art data source (hidden) -->
+                        <div id="art-data-source" class="hidden">
+                            <div class="art-card" data-src="https://i.imgur.com/hngbJHw.png" data-title="Paladin" data-date="2024" data-tools="Gimp" data-tags="Digital Painting, Character, Fantasy" data-process="Detailed character illustration created using Gimp, focusing on lighting and metallic textures."></div>
+                            <div class="art-card" data-src="https://i.imgur.com/nJ5PIHz.jpeg" data-title="DnD Power Armour" data-date="2024" data-tools="Gimp" data-tags="Digital Painting, Character, Fantasy, Sci-Fi" data-process="Concept art for a fantasy power armour set, blending medieval aesthetics with futuristic technology."></div>
+                            <div class="art-card" data-src="https://i.imgur.com/H0fZ2Vi.png" data-gallery="pixel-art" data-title="Pixel Art Showcase" data-process="A collection of various pixel art creations, including characters, environments, and animations, focusing on atmospheric storytelling."></div>
+                        </div>
+
+                        <!-- New Slideshow Structure -->
+                        <div id="art-slideshow-container" class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center min-h-[60vh]">
+                            <!-- Image Display -->
+                            <div class="md:col-span-2 relative">
+                                <img id="slideshow-image" src="" alt="Art piece" class="w-full h-auto border-2 border-[var(--border-color)] transition-opacity duration-500 ease-in-out">
+                                <button id="slideshow-prev" class="absolute top-1/2 left-2 md:left-4 -translate-y-1/2 corp-button !p-3 !border-none bg-black/50 hover:bg-[var(--color-accent)] text-white"><i data-lucide="arrow-left" class="w-6 h-6"></i></button>
+                                <button id="slideshow-next" class="absolute top-1/2 right-2 md:right-4 -translate-y-1/2 corp-button !p-3 !border-none bg-black/50 hover:bg-[var(--color-accent)] text-white"><i data-lucide="arrow-right" class="w-6 h-6"></i></button>
+                            </div>
+
+                            <!-- Details -->
+                            <div class="md:col-span-1">
+                                 <h3 id="slideshow-title" class="page-title text-3xl font-bold uppercase tracking-widest mb-4 font-mono"></h3>
+                                 <div class="space-y-4">
+                                     <div id="slideshow-details-container">
+                                         <h4 class="section-title text-sm">// Details</h4>
+                                         <p class="font-mono text-sm text-[var(--color-secondary)]"><strong>Date:</strong> <span id="slideshow-date"></span></p>
+                                         <p class="font-mono text-sm text-[var(--color-secondary)]"><strong>Tools:</strong> <span id="slideshow-tools"></span></p>
+                                     </div>
+                                     <div id="slideshow-tags-container">
+                                         <h4 class="section-title text-sm">// Tags</h4>
+                                         <div id="slideshow-tags" class="flex flex-wrap gap-2"></div>
+                                     </div>
+                                     <div>
+                                         <h4 class="section-title text-sm">// Process</h4>
+                                         <p id="slideshow-process" class="text-[var(--color-secondary)]"></p>
+                                     </div>
+                                     <div id="slideshow-view-gallery-btn-container" class="pt-4"></div>
+                                 </div>
+                            </div>
+                        </div>
+                        <div id="slideshow-dots" class="flex justify-center gap-3 mt-8"></div>
+                    </section>
+                </div>
+
+                <!-- ART DETAIL PAGE (TEMPLATE) -->
+                <div id="page-art-detail" class="page">
+                    <section class="py-10 content-section">
+                        <button id="back-to-art" class="corp-button inline-flex items-center gap-2 px-4 py-2 mb-8"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Gallery</button>
+                        
+                        <!-- Single Image View -->
+                        <div id="art-detail-single-view" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="md:col-span-2">
+                                <img id="art-detail-image" src="" alt="Art detail view" class="w-full h-auto border-2 border-[var(--border-color)]">
+                            </div>
+                            <div class="md:col-span-1">
+                                <h3 id="art-detail-title" class="page-title text-3xl font-bold uppercase tracking-widest mb-4 font-mono"></h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h4 class="section-title text-sm">// Details</h4>
+                                        <p class="font-mono text-sm text-[var(--color-secondary)]"><strong>Date:</strong> <span id="art-detail-date"></span></p>
+                                        <p class="font-mono text-sm text-[var(--color-secondary)]"><strong>Tools:</strong> <span id="art-detail-tools"></span></p>
+                                    </div>
+                                    <div>
+                                        <h4 class="section-title text-sm">// Tags</h4>
+                                        <div id="art-detail-tags" class="flex flex-wrap gap-2"></div>
+                                    </div>
+                                    <div>
+                                        <h4 class="section-title text-sm">// Process</h4>
+                                        <p id="art-detail-process" class="text-[var(--color-secondary)]"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gallery View -->
+                        <div id="art-detail-gallery-view" class="hidden">
+                            <h3 id="gallery-detail-title" class="page-title text-3xl font-bold uppercase tracking-widest mb-4 font-mono"></h3>
+                            <p id="gallery-detail-process" class="text-lg text-[var(--color-secondary)] mb-8"></p>
+                            <div id="art-detail-gallery-grid" class="art-gallery">
+                                <!-- Gallery images will be injected here by JS -->
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+
+                <!-- CODE PAGE -->
+                <div id="page-code" class="page">
+                    <section class="py-10 content-section">
+                        <h3 class="page-title text-2xl font-bold uppercase tracking-widest mb-8 font-mono">Code Case Studies</h3>
+                        <div id="code-case-study-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- List of case studies will be injected here -->
+                        </div>
+                        <div id="code-case-study-detail" class="hidden">
+                            <!-- Selected case study detail will be injected here -->
+                        </div>
+                    </section>
+                </div>
+
+                <!-- WORLD BUILDING PAGE -->
+                <div id="page-worldbuilding" class="page">
+                     <section class="py-10 content-section">
+                        <h3 class="page-title text-2xl font-bold uppercase tracking-widest mb-8 font-mono">World Building</h3>
+                        <div class="world-gallery">
+                            <div class="world-card" data-world-id="everfield">
+                                <img src="https://placehold.co/600x400/5c00d9/1c1c1c?text=Everfield" alt="Project Everfield" class="w-full h-auto">
+                                <div class="p-4">
+                                    <h5 class="font-bold text-lg mb-2">Project Everfield</h5>
+                                    <p class="text-sm text-[var(--color-secondary)]">A noble dark fantasy world where medieval magic coexists with remnants of lost sci-fi technology.</p>
+                                </div>
+                            </div>
+                            <div class="world-card" data-world-id="echoes">
+                                <img src="https://placehold.co/600x400/0067d9/1c1c1c?text=Echoes" alt="Echoes of Light and Shadow" class="w-full h-auto">
+                                <div class="p-4">
+                                    <h5 class="font-bold text-lg mb-2">Echoes of Light and Shadow</h5>
+                                    <p class="text-sm text-[var(--color-secondary)]">A hard sci-fi universe where humanity clings to survival in isolated pockets of light across a silent cosmos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- WORLD DETAIL PAGE (TEMPLATE) -->
+                <div id="page-world-detail" class="page">
+                    <section class="py-10 content-section">
+                        <button id="back-to-worlds" class="corp-button inline-flex items-center gap-2 px-4 py-2 mb-8"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Worlds</button>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                            <div class="md:col-span-1">
+                                <img id="world-detail-image" src="" alt="World detail view" class="w-full h-auto border-2 border-[var(--border-color)] mb-4">
+                                <h3 id="world-detail-title" class="page-title text-3xl font-bold uppercase tracking-widest font-mono"></h3>
+                                <p id="world-detail-tagline" class="text-lg text-[var(--color-secondary)] mt-2"></p>
+                            </div>
+                            <div class="md:col-span-2">
+                                <div class="space-y-8">
+                                    <div>
+                                        <h4 class="section-title"><i data-lucide="book-open" class="w-5 h-5 mr-3"></i>// Overview</h4>
+                                        <p id="world-detail-overview" class="text-[var(--color-secondary)] leading-relaxed"></p>
+                                    </div>
+                                    <div>
+                                        <h4 class="section-title"><i data-lucide="users-2" class="w-5 h-5 mr-3"></i>// Key Factions</h4>
+                                        <div id="world-detail-factions" class="space-y-4"></div>
+                                    </div>
+                                    <div>
+                                        <h4 class="section-title"><i data-lucide="map-pin" class="w-5 h-5 mr-3"></i>// Notable Locations</h4>
+                                        <div id="world-detail-locations" class="space-y-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- CONTACT PAGE -->
+                <div id="page-contact" class="page">
+                    <section class="py-10 content-section">
+                        <h3 class="page-title text-2xl font-bold uppercase tracking-widest mb-8 font-mono">Contact & Terms</h3>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                            <div class="prose-styles">
+                                <h4 class="section-title"><i data-lucide="file-text" class="w-5 h-5 mr-3"></i>// Boundaries & Terms</h4>
+                                <p>I'm passionate about collaborating on exciting projects. To ensure a smooth and professional process, please review the following terms before getting in touch.</p>
+                                <ul>
+                                    <li><strong>Project Scope:</strong> I do not accept work on projects that involve <span class="keyword-highlight">NSFW or pornographic content</span>. My focus is on creating engaging, respectful, and creative experiences.</li>
+                                    <li><strong>Payment:</strong> All freelance projects require a <span class="keyword-highlight">50% upfront payment</span> before work begins. The final 50% is due upon completion and delivery of the final assets.</li>
+                                    <li><strong>Pricing:</strong> Rates vary depending on the scope, complexity, and timeline of the project. Please contact me with your project details for a custom quote.</li>
+                                    <li><strong>Engine & Tools:</strong> For development and programming work, I operate <span class="keyword-highlight">exclusively within the Unity engine</span>. For art and SFX assets, I can create content suitable for any engine, including Unreal Engine 4 and 5.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="section-title"><i data-lucide="send" class="w-5 h-5 mr-3"></i>// Send Transmission</h4>
+                                <form id="contact-form" class="space-y-6">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label for="name" class="block text-sm font-mono uppercase mb-2 text-[var(--color-secondary)]">Name</label>
+                                            <input type="text" id="name" name="name" required class="w-full p-3 form-input">
+                                        </div>
+                                        <div>
+                                            <label for="email" class="block text-sm font-mono uppercase mb-2 text-[var(--color-secondary)]">Email</label>
+                                            <input type="email" id="email" name="email" required class="w-full p-3 form-input">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="message" class="block text-sm font-mono uppercase mb-2 text-[var(--color-secondary)]">Message</label>
+                                        <textarea id="message" name="message" rows="6" required class="w-full p-3 form-input"></textarea>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" id="contact-submit-btn" class="corp-button inline-flex items-center gap-3 px-10 py-4 text-lg font-bold">
+                                            <i data-lucide="send" class="w-5 h-5"></i>
+                                            <span id="contact-submit-text">Send Message</span>
+                                        </button>
+                                    </div>
+                                </form>
+                                <div id="contact-status" class="text-center mt-6 font-mono"></div>
+                            </div>
+                        </div>
+                         <div class="mt-16 flex justify-center flex-wrap gap-6">
+                            <a href="https://www.artstation.com/sirkiefy" target="_blank" class="text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors"><i data-lucide="brush" class="w-8 h-8"></i><span class="sr-only">ArtStation</span></a>
+                            <a href="https://www.twitch.tv/sirkiefy" target="_blank" class="text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors"><i data-lucide="twitch" class="w-8 h-8"></i><span class="sr-only">Twitch</span></a>
+                            <a href="https://discord.gg/your-invite-code" target="_blank" class="text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors"><i data-lucide="message-square" class="w-8 h-8"></i><span class="sr-only">Discord</span></a>
+                            <a href="https://github.com/SirKiefy" target="_blank" class="text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors"><i data-lucide="github" class="w-8 h-8"></i><span class="sr-only">GitHub</span></a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-6 text-center w-full">
+        <p class="text-sm text-[var(--color-secondary)]">&copy; 2025 SirKiefy. All Rights Reserved.</p>
+    </footer>
+    
+    <!-- Audio Engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="script.js"></script>
+
+</body>
+</html>
