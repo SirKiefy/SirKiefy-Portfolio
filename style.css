@@ -213,7 +213,7 @@ body.loaded > *:not(#preloader) {
 .corp-button:disabled { cursor: not-allowed; opacity: 0.5; }
 
 h3.page-title { color: var(--color-accent); }
-h4.section-title {
+.section-title {
     font-family: var(--font-mono);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -361,6 +361,9 @@ header { position: relative; }
     line-height: 1.75;
     color: var(--color-secondary);
 }
+.prose-styles p + p {
+    margin-top: 1em;
+}
 .prose-styles ol, .prose-styles ul {
     padding-left: 1.5rem;
     list-style-type: decimal;
@@ -447,5 +450,7 @@ header { position: relative; }
 .corner-item { position: absolute; font-family: var(--font-mono); color: var(--color-secondary); font-size: 12px; text-transform: uppercase; pointer-events: auto; transition: color 0.3s ease; }
 .corner-item a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
 .corner-item a:hover { color: var(--color-accent); }
-.top-left { top: 2.5rem; left: 2.5rem; } .top-right { top: 2.5rem; right: 2.5rem; text-align: right; }
-.bottom-left { bottom: 2.5rem; left: 2.5rem; } .bottom-right { bottom: 2.5rem; right: 2.5rem; text-align: right; }
+.top-left { top: 2.5rem; left: 2.5rem; } 
+.top-right { top: 2.5rem; right: 2.5rem; text-align: right; }
+.bottom-left { bottom: 2.5rem; left: 2.5rem; } 
+.bottom-right { bottom: 2.5rem; right: 2.5rem; text-align: right; }
