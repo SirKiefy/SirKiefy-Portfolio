@@ -473,6 +473,10 @@ public class PlayerCharacter : MonoBehaviour {
             tagline: "Where forgotten science bleeds into new magic.",
             image: "https://placehold.co/600x800/5c00d9/1c1c1c?text=Everfield",
             overview: "A noble dark fantasy world echoing with loss and loneliness. Once a hyper-advanced technological civilization, a cataclysm shattered reality itself, ushering in an age of wild magic and terrifying monsters. Now, medieval kingdoms rise and fall among the ruins of chrome towers, and knights in plate armour might stumble upon ancient power cells they mistake for magical artifacts. The world's 'magic' is the chaotic, untamed energy leaking from the scars the Ancients left upon the fabric of the universe.",
+            concepts: [
+                { name: "Noble Dark Fantasy", description: "A genre that acknowledges the grim and brutal realities of its world but emphasizes that acts of hope, heroism, and sacrifice are still meaningful, even if they don't save the world." },
+                { name: "Techno-Magic", description: "Magic is not an innate, mystical force but rather the chaotic, unpredictable energy leaking from decaying, hyper-advanced technology. A 'fireball' might be a malfunctioning plasma grenade; a 'healing potion' could be a nanite-infusion canister." },
+            ],
             factions: [
                 { name: "The Archivists of Aethelburg", description: "A monastic order dedicated to preserving the 'Old Tech'. They see the past not as a lost golden age, but as a library of dangerous knowledge that must be protected from those who would misuse it. They are reclusive, scholarly, and deeply suspicious of the new 'mages'." },
                 { name: "The Wild Mages of the Scarred Lands", description: "Individuals who have learned to crudely channel the raw, chaotic magic that now permeates the world. Their power is immense but dangerously unstable, often coming at a great physical or mental cost. They are outcasts, revered and feared in equal measure." },
@@ -489,6 +493,10 @@ public class PlayerCharacter : MonoBehaviour {
             tagline: "Humanity's last embers in a cold, silent universe.",
             image: "https://placehold.co/600x800/0067d9/1c1c1c?text=Echoes",
             overview: "In the wake of a Golden Age's silent collapse, humanity clings to survival in isolated star-systems, connected only by treacherous 'light-lanes' through an unnervingly quiet cosmos. The great mystery is not one of alien empires, but of their complete absence. The universe is vast, ancient, and empty, and the pressing question is 'Why?'. This is a story of exploration, isolation, and the psychological toll of being utterly alone in the dark.",
+            concepts: [
+                { name: "The Great Silence", description: "The central mystery of the universe. Despite millennia of exploration, no signs of intelligent alien life, past or present, have ever been discovered, leading to widespread existential dread and dangerous philosophical movements." },
+                { name: "Light-Lanes", description: "Stable, naturally occurring tunnels through hyperspace that are the only known method of faster-than-light travel. They are unpredictable and require skilled pilots, making interstellar trade and communication a high-risk endeavor." },
+            ],
             factions: [
                 { name: "The Lantern Bearers", description: "An almost religious guild of pilots and engineers who maintain the fragile light-lanes. They are the lifeline of scattered humanity, revered for their courage in facing the oppressive silence between stars. To be a Lantern Bearer is to accept a life of solitude and immense responsibility." },
                 { name: "The Void-touched", description: "Groups of humans who have adapted to life in the 'Shadow', the dark spaces outside the light-lanes. Some have undergone genetic modification, while others have simply been driven mad by the silence. They are seen as boogeymen by the rest of humanity, raiding ships that stray too far from the path." },
@@ -1374,6 +1382,8 @@ public class PlayerCharacter : MonoBehaviour {
         const detailOverview = document.getElementById('world-detail-overview');
         const detailFactions = document.getElementById('world-detail-factions');
         const detailLocations = document.getElementById('world-detail-locations');
+        const detailConcepts = document.getElementById('world-detail-concepts');
+        const detailConceptsContainer = document.getElementById('world-detail-concepts-container');
         const backToWorldsBtn = document.getElementById('back-to-worlds');
 
         worldCards.forEach(card => {
@@ -1386,6 +1396,19 @@ public class PlayerCharacter : MonoBehaviour {
                     detailTitle.textContent = data.title;
                     detailTagline.textContent = data.tagline;
                     detailOverview.textContent = data.overview;
+                    
+                    if (data.concepts && data.concepts.length > 0) {
+                        detailConcepts.innerHTML = '';
+                        data.concepts.forEach(concept => {
+                            const el = document.createElement('div');
+                            el.innerHTML = `<p class="font-bold text-[var(--color-foreground)]">${concept.name}</p><p class="text-sm text-[var(--color-secondary)]">${concept.description}</p>`;
+                            detailConcepts.appendChild(el);
+                        });
+                        detailConceptsContainer.classList.remove('hidden');
+                    } else {
+                        detailConceptsContainer.classList.add('hidden');
+                    }
+
                     detailFactions.innerHTML = '';
                     data.factions.forEach(faction => {
                         const factionEl = document.createElement('div');
