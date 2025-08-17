@@ -20,7 +20,7 @@
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[var(--color-bg-main)]">
+<body class="bg-[var(--color-bg-main)] text-[var(--color-foreground)]">
     <!-- Preloader Animation -->
     <div id="preloader">
         <div class="glitch-wrapper">
@@ -28,10 +28,11 @@
         </div>
     </div>
 
+    <!-- Corner elements for static info -->
     <aside class="corner-elements">
         <div class="corner-item top-left">SFX / World Builder / Artist</div>
         <nav class="corner-item top-right flex items-center gap-4">
-            <a href="mailto:your-email@example.com"><i data-lucide="mail" class="w-4 h-4"></i> Email Me</a>
+            <a href="#" class="nav-link" data-page="contact"><i data-lucide="mail" class="w-4 h-4"></i> Email Me</a>
             <span class="text-[var(--color-secondary)]">|</span>
             <a href="https://www.artstation.com/sirkiefy" target="_blank"><i data-lucide="brush" class="w-4 h-4"></i> ArtStation</a>
             <button id="theme-toggle" class="ml-4 text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors">
@@ -43,11 +44,12 @@
         <time class="corner-item bottom-right" id="current-time"></time>
     </aside>
 
+    <!-- Main Header Navigation -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg-content)] backdrop-blur-md">
         <div class="header-decoration left"></div>
         <div class="header-decoration right"></div>
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-lg font-bold tracking-widest uppercase font-mono text-[var(--color-foreground)]"><a href="#home" class="nav-link" data-page="home">SirKiefy</a></h1>
+            <h1 class="text-lg font-bold tracking-widest uppercase font-mono"><a href="#home" class="nav-link" data-page="home">SirKiefy</a></h1>
             <nav id="main-nav" class="hidden md:flex space-x-8 nav-links">
                 <a class="nav-link" data-page="about">// About</a>
                 <a class="nav-link" data-page="projects">// Projects</a>
@@ -64,6 +66,7 @@
         </div>
     </header>
 
+    <!-- Main Content Area -->
     <main class="container mx-auto px-6 pt-32 mb-12">
         <div class="frame-container">
             <div class="frame-corner frame-corner--top-left"></div>
@@ -76,8 +79,8 @@
                 <div id="page-home" class="page active">
                     <section class="min-h-[70vh] flex flex-col justify-center items-center text-center content-section">
                         <div class="max-w-4xl">
-                             <p class="font-mono text-lg text-[var(--color-accent)] mb-4 uppercase tracking-widest page-title">SFX | World Builder | Artist</p>
-                            <h2 class="text-5xl md:text-7xl font-black leading-tight text-[var(--color-foreground)]">Systematic Sound & Vision</h2>
+                             <p class="font-mono text-lg text-[var(--color-accent)] mb-4 uppercase tracking-widest">SFX | World Builder | Artist</p>
+                            <h2 class="text-5xl md:text-7xl font-black leading-tight">Systematic Sound & Vision</h2>
                             <p class="mt-6 text-xl text-[var(--color-secondary)] max-w-2xl mx-auto">Crafting immersive worlds through sound, code, and visuals. I specialize in bringing digital experiences to life.</p>
                             <a href="#projects" class="corp-button mt-10 inline-block px-8 py-3 font-bold nav-link" data-page="projects">View My Projects</a>
                         </div>
@@ -107,13 +110,13 @@
                                 </div>
                                 <div>
                                     <h4 class="section-title"><i data-lucide="gem" class="w-5 h-5 mr-3"></i>// My Dream Project</h4>
-                                    <p>My ultimate goal is to bring "Project Evergarden" to life—a "Noble Dark" fantasy RPG that explores themes of loss, loneliness, and the search for meaning in a fractured world. It is a universe where medieval fantasy coexists with the haunting, often dangerous, remnants of a lost, hyper-advanced technological past, a world born from a cataclysm that shattered reality itself.
-
-The game will balance the grim realities of a fallen world with moments of genuine hope, defiant joy, and earned heroism. The design is built upon deep, systemic gameplay where player choices have a tangible and lasting impact on the world state, its factions, and its inhabitants. My GDD for the project outlines a complex combat system with stance-switching mechanics, a robust magic system with elemental synergies and dynamic spell-crafting, and a character progression defined by nine core stats. This will be combined with a rich, branching narrative and an unforgettable, atmospheric sound design that brings the world's unique biomes—from the surreal Crystal Oasis Desert with its giant mana gems to the charred, desolate Dead Forest of the World Tree—to vivid life. My vision is to blend the environmental storytelling, challenging deliberate combat, and intricate world design of a FromSoftware title with the narrative agency, deep character focus, and impactful choices of a classic BioWare RPG.</p>
+                                    <p>My ultimate goal is to bring "Project Evergarden" to life—a "Noble Dark" fantasy RPG that explores themes of loss, loneliness, and the search for meaning in a fractured world. It is a universe where medieval fantasy coexists with the haunting, often dangerous, remnants of a lost, hyper-advanced technological past, a world born from a cataclysm that shattered reality itself.</p>
+                                    <p>The game will balance the grim realities of a fallen world with moments of genuine hope, defiant joy, and earned heroism. The design is built upon deep, systemic gameplay where player choices have a tangible and lasting impact on the world state, its factions, and its inhabitants. My GDD for the project outlines a complex combat system with stance-switching mechanics, a robust magic system with elemental synergies and dynamic spell-crafting, and a character progression defined by nine core stats.</p>
+                                    <p>This will be combined with a rich, branching narrative and an unforgettable, atmospheric sound design that brings the world's unique biomes—from the surreal Crystal Oasis Desert with its giant mana gems to the charred, desolate Dead Forest of the World Tree—to vivid life. My vision is to blend the environmental storytelling, challenging deliberate combat, and intricate world design of a FromSoftware title with the narrative agency, deep character focus, and impactful choices of a classic BioWare RPG.</p>
                                 </div>
                                 <div>
                                     <h4 class="section-title"><i data-lucide="gamepad-2" class="w-5 h-5 mr-3"></i>// Hobbies</h4>
-                                    <p>Outside of my university work and personal projects, I remain an avid Dungeons & Dragons player and Dungeon Master. <span class="secret-trigger" title="Inspect Anomaly?">homebrew content</span>  This love for tabletop RPGs constantly fuels my passion for world-building, systems design, and interactive storytelling. It's a practical laboratory where I can freely experiment with new mechanics, narrative structures, and player-driven stories—skills that directly translate back into my digital design work. I also still enjoy the strategic challenge of competitive esports, which keeps my understanding of player motivation, game balance, and high-level gameplay sharp and current.</p>
+                                    <p>Outside of my university work and personal projects, I remain an avid Dungeons & Dragons player and Dungeon Master. <span class="secret-trigger" title="Inspect Anomaly?">homebrew content</span> This love for tabletop RPGs constantly fuels my passion for world-building, systems design, and interactive storytelling. It's a practical laboratory where I can freely experiment with new mechanics, narrative structures, and player-driven stories—skills that directly translate back into my digital design work. I also still enjoy the strategic challenge of competitive esports, which keeps my understanding of player motivation, game balance, and high-level gameplay sharp and current.</p>
                                     <div class="secret-panel text-[var(--color-secondary)]">
                                         <h5 class="font-mono text-lg anomaly-title">// HOMEBREW_LOG.DAT</h5>
                                         <p class="mt-2">My homebrew creations often explore unique mechanics and thematic concepts. I enjoy designing new subclasses, monsters with interesting AI patterns, and self-contained adventure modules. Feel free to ask me about them!</p>
@@ -130,7 +133,7 @@ The game will balance the grim realities of a fallen world with moments of genui
                         <h3 class="page-title text-2xl font-bold uppercase tracking-widest mb-8 font-mono">Projects</h3>
                         <div class="project-gallery">
                             <div class="project-card" data-project-id="wreck-it-relph">
-                                <img src="https://i.imgur.com/vvDQsvu.jpeg" alt="Don't Wreck It Relph Game Jam" class="w-full h-auto">
+                                <img src="https://i.imgur.com/vvDQsvu.jpeg" alt="Don't Wreck It Relph Game Jam" class="w-full h-auto object-cover aspect-video">
                                 <div class="p-4">
                                     <h5 class="font-bold text-lg mb-2">Don't Wreck It Relph (2024)</h5>
                                     <p class="text-sm text-[var(--color-secondary)] mb-4">A successful 2024 game jam entry. <span class="secret-trigger" title="Inspect Scores?">//View Scores</span></p>
@@ -145,7 +148,7 @@ The game will balance the grim realities of a fallen world with moments of genui
                                 </div>
                             </div>
                             <div class="project-card" data-project-id="project-patched">
-                                <img src="https://i.imgur.com/7dxE1Tk.gif" alt="Project Patched Game Jam" class="w-full h-auto">
+                                <img src="https://i.imgur.com/7dxE1Tk.gif" alt="Project Patched Game Jam" class="w-full h-auto object-cover aspect-video">
                                 <div class="p-4">
                                     <h5 class="font-bold text-lg mb-2">Project Patched (2023)</h5>
                                     <p class="text-sm text-[var(--color-secondary)] mb-4">A 2023 game jam project. <span class="secret-trigger" title="Inspect Scores?">//View Scores</span></p>
@@ -221,8 +224,8 @@ The game will balance the grim realities of a fallen world with moments of genui
                         
                         <!-- Art data source (hidden) -->
                         <div id="art-data-source" class="hidden">
-                            <div class="art-card" data-src="https://i.imgur.com/hngbJHw.png" data-title="Paladin" data-date="2016" data-tools="Gimp" data-tags="Digital Painting, Character, Fantasy" data-process="Detailed character illustration created using Gimp, focusing on lighting and metallic textures in a cartoon style with Mordreads sword from the anime series Fate Apoc."></div>
-                            <div class="art-card" data-src="https://i.imgur.com/nJ5PIHz.jpeg" data-title="DnD Power Armour" data-date="2019" data-tools="Gimp" data-tags="Digital Painting, Character, Fantasy, Sci-Fi" data-process="Concept art for a fantasy power armour set, blending medieval aesthetics with futuristic technology mixed."></div>
+                            <div class="art-card" data-src="https://i.imgur.com/hngbJHw.png" data-title="Paladin" data-date="2016" data-tools="Gimp" data-tags="Digital Painting, Character, Fantasy" data-process="Detailed character illustration created using Gimp, focusing on lighting and metallic textures in a cartoon style with Mordred's sword from the anime series Fate Apocrypha."></div>
+                            <div class="art-card" data-src="https://i.imgur.com/nJ5PIHz.jpeg" data-title="DnD Power Armour" data-date="2019" data-tools="Gimp" data-tags="Digital Painting, Character, Fantasy, Sci-Fi" data-process="Concept art for a fantasy power armour set, blending medieval aesthetics with futuristic technology."></div>
                             <div class="art-card" data-src="https://i.imgur.com/H0fZ2Vi.png" data-gallery="pixel-art" data-title="Pixel Art Showcase" data-process="A collection of various pixel art creations, including characters, environments, and animations, focusing on atmospheric storytelling."></div>
                         </div>
 
@@ -418,7 +421,7 @@ The game will balance the grim realities of a fallen world with moments of genui
                          <div class="mt-16 flex justify-center flex-wrap gap-6 items-center">
                             <a href="https://www.artstation.com/sirkiefy" target="_blank" class="text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors"><i data-lucide="brush" class="w-8 h-8"></i><span class="sr-only">ArtStation</span></a>
                             <a href="https://www.twitch.tv/thesirkiefy" target="_blank" class="text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors"><i data-lucide="twitch" class="w-8 h-8"></i><span class="sr-only">Twitch</span></a>
-                            <div class="text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors flex items-center gap-2">
+                            <div class="text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors flex items-center gap-2 cursor-pointer" title="Discord: SirKiefy (Click to copy)">
                                 <i data-lucide="message-square" class="w-8 h-8"></i>
                                 <span class="font-mono text-sm">SirKiefy</span>
                             </div>
