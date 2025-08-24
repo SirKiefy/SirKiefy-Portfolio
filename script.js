@@ -1493,7 +1493,7 @@ public class PlayerCharacter : MonoBehaviour {
     function setupDynamicInfo() {
         const panel = document.getElementById('pronoun-secret');
         if (!panel) return;
-        panel.innerHTML = `<p>I am a 20-year-old British university student studying Game Design. I'm autistic, demisexual, and a proud member of the LGBTQ+ community.</p>`;
+        panel.innerHTML = `<p>I am a 20-year-old British university student studying Game Design. I have autism but that doesn't stop me from making your dream game!.</p>`;
     }
 
     // --- Initialization ---
