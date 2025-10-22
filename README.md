@@ -1,7 +1,7 @@
 # SirKiefy's Portfolio Website
 This repository contains the source code for my personal portfolio website, designed to showcase my skills in SFX, world-building, art, and programming.
 
-The live version of this portfolio is hosted on GitHub Pages and can be viewed here: sirkiefy.github.io (Replace with your actual GitHub Pages URL).
+The live version of this portfolio is hosted on GitHub Pages and can be viewed here: sirkiefy.github.io/SirKiefy-Portfolio/.
 
 ## Technologies Used
 HTML5
