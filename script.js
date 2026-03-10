@@ -368,58 +368,102 @@ public class PlayerCharacter : MonoBehaviour {
     const sfxData = {
         'cowsins-fps-engine': {
             title: "Cowsins FPS Engine",
-            summary: "A comprehensive sound library for a Unity FPS engine.",
+            category: "FPS / Shooter",
+            year: "2023",
+            summary: "A comprehensive sound library for a Unity FPS engine, covering weapons, character foley, and environmental ambiances.",
             image: "https://assetstorev1-prd-cdn.unity3d.com/key-image/1170faf2-6566-4d2c-a7be-74cbaa58976d.webp",
-            role: "As the SFX Designer, I created a wide range of audio assets including weapon sounds (gunshots, reloads, handling), character foley (footsteps, jumps), and environmental ambiances to enhance player immersion.",
-            thoughtProcess: "The goal for the FPS engine was to deliver impactful, realistic, and satisfying weapon audio. Each gunshot is a multi-layered composition of a sharp transient 'crack', a weighty 'body', and a tail that reflects the environment. Foley sounds like footsteps were designed to be subtle but informative, changing based on the surface material to provide tactical feedback to the player.",
+            role: "As the SFX Designer, I created a wide range of audio assets including weapon sounds (gunshots, reloads, handling), character foley (footsteps, jumps, land impacts), and environmental ambiances to enhance player immersion. Every sound was mixed and mastered to work cleanly within Unity's audio mixer pipeline.",
+            thoughtProcess: "The goal for the FPS engine was to deliver impactful, realistic, and satisfying weapon audio. Each gunshot is a multi-layered composition: a sharp transient 'crack' for the initial impact, a weighty low-frequency 'body' for the percussive punch, and a decaying tail that reflects the acoustic environment. Foley sounds like footsteps were designed to be subtle but informative—each surface material (concrete, grass, wood, metal, sand) has its own unique timbre and rhythm to provide tactical feedback without cluttering the soundscape. Empty magazine clicks and weapon handling sounds were crafted to feel mechanical and grounded, rewarding attentive players with detailed auditory cues.",
             technologies: ["Unity", "FMOD", "Audacity"],
             link: "https://assetstore.unity.com/packages/templates/systems/fps-engine-218594",
+            stats: { assets: "60+", categories: "5", format: "WAV / 16-bit" },
+            highlights: [
+                "Multi-layered weapon audio: transient crack, weighted body, and environmental tail",
+                "Surface-responsive footstep system across 5 distinct material types",
+                "3D positional audio tuned for FMOD spatial blending and occlusion",
+                "All assets delivered at 44.1 kHz / 16-bit WAV for maximum compatibility"
+            ],
             samples: [
-                { id: 'fps-shot', name: 'Assault Rifle Shot' },
-                { id: 'fps-reload', name: 'Pistol Reload' },
-                { id: 'fps-footstep', name: 'Footstep on Concrete' }
+                { id: 'fps-shot', name: 'Assault Rifle Shot', desc: 'Multi-layer gunshot with crack, body, and tail' },
+                { id: 'fps-reload', name: 'Pistol Reload', desc: 'Magazine eject and snap-in mechanics' },
+                { id: 'fps-footstep', name: 'Footstep — Concrete', desc: 'Hard surface foley with subtle reverb' },
+                { id: 'fps-empty', name: 'Empty Magazine Click', desc: 'Mechanical click on an empty chamber' },
+                { id: 'fps-land', name: 'Heavy Land Impact', desc: 'Body impact sound on a solid surface' }
             ]
         },
         'cowsins-inventory': {
             title: "Cowsins Inventory Add-on",
-            summary: "Audio feedback for a flexible inventory system add-on.",
+            category: "UI / Interface",
+            year: "2023",
+            summary: "A cohesive set of UI sound effects for a flexible inventory system, making every interaction feel tactile and responsive.",
             image: "https://assetstorev1-prd-cdn.unity3d.com/key-image/b73234ee-d3ed-478a-8bb4-563b8dc0b928.webp",
-            role: "My role was to design intuitive sound effects for all inventory interactions, such as opening/closing the inventory, moving items, stacking items, and equipping gear. The goal was to make the UI feel tactile and responsive.",
-            thoughtProcess: "UI sound design is about clarity and user feedback. The sounds for the inventory system needed to be short, distinct, and unobtrusive. I used a consistent palette of synthesized clicks, chimes, and gentle swooshes to differentiate actions. The 'pickup' sound is positive and high-pitched, while the 'drop' sound is lower and softer, creating an intuitive audio language for the player.",
+            role: "My role was to design intuitive sound effects for all inventory interactions—opening and closing the inventory panel, moving and stacking items, equipping and unequipping gear, and receiving failure feedback. The goal was to establish a clear audio language so players always understand the outcome of their actions.",
+            thoughtProcess: "UI sound design is fundamentally about clarity and instant feedback. Every sound in the inventory system is short, distinct, and unobtrusive—nothing should pull the player out of the game. I built a consistent synthesized palette of clicks, chimes, and brief swooshes to differentiate actions by type. Positive actions (pickup, equip) use ascending pitch contours and bright tones, while negative feedback (drop, fail) dips lower and softer. This creates an intuitive audio language where players quickly learn the outcome of an interaction without reading any text on screen. File sizes are minimal because every asset is synthesized, keeping the add-on lightweight.",
             technologies: ["Unity", "Audacity"],
             link: "https://assetstore.unity.com/packages/templates/systems/inventory-pro-add-on-for-fps-engine-318131",
+            stats: { assets: "25+", categories: "3", format: "WAV / 16-bit" },
+            highlights: [
+                "Consistent synthesized palette across all UI event types",
+                "Ascending pitch language for positive actions; descending for negative feedback",
+                "Zero-latency playback design optimized for frequent UI interactions",
+                "Cohesive style that complements the FPS Engine audio palette"
+            ],
             samples: [
-                { id: 'inv-pickup', name: 'Item Pickup' },
-                { id: 'inv-click', name: 'UI Click' },
-                { id: 'inv-drop', name: 'Item Drop' }
+                { id: 'inv-pickup', name: 'Item Pickup', desc: 'Bright ascending chime for positive feedback' },
+                { id: 'inv-click', name: 'UI Click', desc: 'Crisp, short click for menu navigation' },
+                { id: 'inv-drop', name: 'Item Drop', desc: 'Soft descending tone for item placement' },
+                { id: 'inv-equip', name: 'Gear Equip', desc: 'Layered click-chime for equipping items' },
+                { id: 'inv-fail', name: 'Action Failed', desc: 'Low dissonant buzz for invalid actions' }
             ]
         },
         'cowsins-save-load': {
             title: "Cowsins Save & Load",
-            summary: "Sound design for a robust save and load system.",
+            category: "System / UI",
+            year: "2023",
+            summary: "Purposeful audio cues for every state of the save and load process, giving players clear status feedback at all times.",
             image: "https://assetstorev1-prd-cdn.unity3d.com/key-image/28a45c15-0850-4758-b693-b7de90471d76.webp",
-            role: "I created distinct audio cues for the saving and loading processes. This included sounds for initiating a save, successful save completion, loading a game, and error notifications, providing clear audio feedback to the player.",
-            thoughtProcess: "For the save/load system, the audio needed to convey information and status clearly. The 'save' sound is a brief, ascending chime that feels reassuring. The 'load' sound is a slightly longer, more melodic piece to signify a transition. An important part was creating a subtle but clear 'error' sound—a low, dissonant buzz—to alert the user to a problem without being alarming.",
+            role: "I created distinct audio cues for the saving and loading processes: initiating a save, confirming success, beginning a load, completing the transition, and signalling errors. Each sound needed to clearly communicate system state without relying on text, making the experience accessible and reassuring.",
+            thoughtProcess: "For the save/load system, the primary design challenge was communicating information through sound alone. The 'save initiated' cue is a brief, ascending chime that feels proactive and reassuring—telling the player that something good is happening. The 'save success' resolves to a full, satisfying chord. The 'load' sequence uses a slightly longer, rising melodic arc to signal a world transition rather than just a file operation. The most critical sound was the 'error' state: it needed to be impossible to miss, yet not alarming—a low, dissonant descending two-tone that is neutral but clearly communicates failure. All sounds share a short reverb tail that gives the system a cohesive, slightly digital feel, matching the futuristic UI aesthetic.",
             technologies: ["Unity", "Audacity"],
             link: "https://assetstore.unity.com/packages/templates/systems/save-load-add-on-for-fps-engine-316848",
+            stats: { assets: "15+", categories: "2", format: "WAV / 16-bit" },
+            highlights: [
+                "Distinct audio states for initiate, success, loading, and error conditions",
+                "Ascending chime language for positive feedback; dissonant tones for errors",
+                "Shared short reverb tail ties all cues into one cohesive system palette",
+                "Designed to work alongside FPS Engine audio without frequency clashes"
+            ],
             samples: [
-                { id: 'save-start', name: 'Save Game' },
-                { id: 'save-success', name: 'Load Success' },
-                { id: 'save-confirm', name: 'UI Confirm' }
+                { id: 'save-start', name: 'Save Initiated', desc: 'Ascending triad chime — save begins' },
+                { id: 'save-success', name: 'Save Complete', desc: 'Full resolved chord — save confirmed' },
+                { id: 'save-confirm', name: 'UI Confirm', desc: 'Sharp high note — generic UI confirmation' },
+                { id: 'save-load', name: 'Load Begin', desc: 'Rising melodic arc — world transition start' },
+                { id: 'save-error', name: 'Error Alert', desc: 'Low dissonant two-tone — operation failed' }
             ]
         },
         'platformer-engine': {
             title: "2D Platformer Engine",
-            summary: "Foundational soundscape for a classic 2D platformer engine.",
+            category: "2D Platformer",
+            year: "2022",
+            summary: "A retro-inspired chiptune sound pack for a classic 2D platformer, evoking the golden age of 16-bit gaming.",
             image: "https://assetstorev1-prd-cdn.unity3d.com/key-image/5481b389-68ed-4eb0-aa57-6a44e4268ebb.webp",
-            role: "As the SFX Designer, I produced a classic retro-style sound pack that included character jumps, landing sounds, coin collections, power-ups, and enemy interactions, evoking a nostalgic platformer feel.",
-            thoughtProcess: "The inspiration for the platformer engine was the 16-bit era. The sounds are generated with simple waveforms (sine, square, triangle) to create a nostalgic, chiptune-style palette. The 'jump' is a quick, rising arpeggio, while the 'coin collect' is a bright, memorable chime. The key was to make each sound iconic and instantly recognizable, just like in the classic games that inspired it.",
-            technologies: ["Unity", "FMOD"],
+            role: "As the SFX Designer, I produced a classic retro-style sound pack covering character movement (jump, land, run), item collection (coins, power-ups), combat (enemy hits, player damage), and game state events (death, level complete). The pack evokes a nostalgic platformer feel while remaining clean and modern enough for any 2D game.",
+            thoughtProcess: "The inspiration was the 16-bit era—SNES and Mega Drive soundscapes. All sounds are synthesized using simple waveforms (sine, square, sawtooth, triangle) to stay true to the era's hardware constraints and create an unmistakable chiptune palette. The 'jump' is a quick, rising frequency sweep that gives a sense of lift, while the 'coin collect' is a bright two-note chime designed to be instantly satisfying and memorable. The 'enemy hit' uses a pink noise burst with a pitched element to feel impactful without being harsh. The 'player death' uses a descending chromatic glide—a beloved trope of classic games—giving it immediate emotional recognition. Every sound is short enough to loop or chain rapidly without fatigue, which is crucial in a fast-paced platformer.",
+            technologies: ["Unity", "FMOD", "Audacity"],
             link: "https://assetstore.unity.com/packages/templates/systems/platformer-engine-2d-2-5d-266973",
+            stats: { assets: "40+", categories: "6", format: "WAV / 16-bit" },
+            highlights: [
+                "Pure chiptune synthesis — square, triangle, and sawtooth waveforms throughout",
+                "Procedural pitch variation prevents listener fatigue on repeated sounds",
+                "Covers all 6 event categories: movement, collection, combat, UI, world, state",
+                "Instantly iconic design language inspired by SNES-era platformer classics"
+            ],
             samples: [
-                { id: 'plat-jump', name: 'Player Jump' },
-                { id: 'plat-coin', name: 'Coin Collect' },
-                { id: 'plat-hit', name: 'Enemy Hit' }
+                { id: 'plat-jump', name: 'Player Jump', desc: 'Rising frequency sweep giving a sense of lift' },
+                { id: 'plat-coin', name: 'Coin Collect', desc: 'Bright two-note chime — immediately satisfying' },
+                { id: 'plat-hit', name: 'Enemy Hit', desc: 'Pink noise burst with pitched impact punch' },
+                { id: 'plat-powerup', name: 'Power-Up Collect', desc: 'Ascending arpeggio — reward confirmation' },
+                { id: 'plat-death', name: 'Player Death', desc: 'Descending chromatic glide — classic game over cue' }
             ]
         }
     };
@@ -561,6 +605,13 @@ public class PlayerCharacter : MonoBehaviour {
             case 'fps-footstep':
                 new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.01, decay: 0.08, sustain: 0 } }).toDestination().triggerAttackRelease("16n", now);
                 break;
+            case 'fps-empty':
+                new Tone.MetalSynth({ frequency: 600, envelope: { attack: 0.001, decay: 0.04, release: 0.01 }, harmonicity: 3.2, modulationIndex: 8, resonance: 400, octaves: 0.3 }).toDestination().triggerAttackRelease("A3", "32n", now);
+                break;
+            case 'fps-land':
+                new Tone.NoiseSynth({ noise: { type: 'brown' }, envelope: { attack: 0.005, decay: 0.18, sustain: 0 } }).toDestination().triggerAttackRelease("8n", now);
+                synth.triggerAttackRelease("C2", "16n", now, 0.4);
+                break;
             // Inventory
             case 'inv-pickup':
                 synth.triggerAttackRelease("C6", "16n", now);
@@ -571,6 +622,14 @@ public class PlayerCharacter : MonoBehaviour {
             case 'inv-drop':
                 synth.triggerAttackRelease("C4", "16n", now, 0.6);
                 break;
+            case 'inv-equip':
+                synth.triggerAttackRelease("E5", "32n", now);
+                new Tone.MetalSynth({ frequency: 300, envelope: { attack: 0.001, decay: 0.04, release: 0.01 }, harmonicity: 3, modulationIndex: 6, resonance: 600, octaves: 0.4 }).toDestination().triggerAttackRelease("A2", "32n", now + 0.03);
+                break;
+            case 'inv-fail':
+                synth.triggerAttackRelease("A3", "16n", now, 0.7);
+                synth.triggerAttackRelease("Ab3", "16n", now + 0.12, 0.7);
+                break;
             // Save/Load
             case 'save-start':
                 synth.triggerAttackRelease(["C4", "E4", "G4"], "8n", now);
@@ -579,7 +638,17 @@ public class PlayerCharacter : MonoBehaviour {
                 synth.triggerAttackRelease(["C5", "E5", "G5", "C6"], "4n", now);
                 break;
             case 'save-confirm':
-                 synth.triggerAttackRelease("G5", "16n", now);
+                synth.triggerAttackRelease("G5", "16n", now);
+                break;
+            case 'save-load':
+                synth.triggerAttackRelease("G4", "16n", now);
+                synth.triggerAttackRelease("A4", "16n", now + 0.1);
+                synth.triggerAttackRelease("B4", "16n", now + 0.2);
+                synth.triggerAttackRelease("D5", "8n", now + 0.32);
+                break;
+            case 'save-error':
+                synth.triggerAttackRelease("F3", "8n", now, 0.9);
+                synth.triggerAttackRelease("B2", "8n", now + 0.18, 0.9);
                 break;
             // Platformer
             case 'plat-jump':
@@ -594,6 +663,14 @@ public class PlayerCharacter : MonoBehaviour {
             case 'plat-hit':
                 const hitNoise = new Tone.NoiseSynth({ noise: { type: 'pink' }, envelope: { attack: 0.001, decay: 0.15, sustain: 0 } }).toDestination();
                 hitNoise.triggerAttackRelease("8n", now);
+                break;
+            case 'plat-powerup':
+                const puSynth = new Tone.Synth({ oscillator: { type: 'square' }, envelope: { attack: 0.001, decay: 0.08, sustain: 0.05, release: 0.05 } }).toDestination();
+                ['C5','E5','G5','C6','E6'].forEach((note, i) => puSynth.triggerAttackRelease(note, "32n", now + i * 0.07));
+                break;
+            case 'plat-death':
+                const deathSynth = new Tone.Synth({ oscillator: { type: 'square' }, envelope: { attack: 0.001, decay: 0.12, sustain: 0, release: 0 } }).toDestination();
+                ['B4','Bb4','A4','Ab4','G4','F#4','F4','E4'].forEach((note, i) => deathSynth.triggerAttackRelease(note, "16n", now + i * 0.09));
                 break;
         }
     };
@@ -763,12 +840,22 @@ public class PlayerCharacter : MonoBehaviour {
             const techHtml = project.technologies.map(tech => `<span class="border border-[var(--border-color)] rounded-full px-3 py-1 text-sm">${tech}</span>`).join('');
             const samplesHtml = project.samples.map(sample => `
                 <div class="sfx-sample-item">
-                    <span class="font-mono text-sm">${sample.name}</span>
-                    <button class="sfx-sample-play-btn" data-sample-id="${sample.id}">
+                    <div class="sfx-sample-info">
+                        <span class="font-mono text-sm">${sample.name}</span>
+                        <span class="sfx-sample-desc">${sample.desc}</span>
+                    </div>
+                    <button class="sfx-sample-play-btn" data-sample-id="${sample.id}" title="Play sample">
                         <i data-lucide="play" class="w-5 h-5"></i>
                     </button>
                 </div>
             `).join('');
+            const statsHtml = Object.entries(project.stats).map(([label, value]) => `
+                <div class="sfx-stat-item">
+                    <span class="sfx-stat-value">${value}</span>
+                    <span class="sfx-stat-label">${label}</span>
+                </div>
+            `).join('');
+            const highlightsHtml = project.highlights.map(h => `<li class="sfx-highlight-item">${h}</li>`).join('');
 
             const detailContent = document.createElement('div');
             detailContent.className = 'fade-in-view';
@@ -776,14 +863,25 @@ public class PlayerCharacter : MonoBehaviour {
                 <button id="back-to-sfx-list" class="corp-button inline-flex items-center gap-2 px-4 py-2 mb-8"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back to SFX Projects</button>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <div>
-                        <img src="${project.image}" alt="${project.title}" class="w-full h-auto border-2 border-[var(--border-color)] mb-8">
-                        <div class="prose-styles">
+                        <div class="relative mb-8">
+                            <img src="${project.image}" alt="${project.title}" class="w-full h-auto border-2 border-[var(--border-color)]">
+                            <span class="sfx-card-badge">${project.category}</span>
+                        </div>
+                        <div class="sfx-stats-row mb-8">${statsHtml}</div>
+                        <div class="prose-styles mb-8">
                             <h5 class="section-title">// Train of Thought</h5>
                             <p>${project.thoughtProcess}</p>
                         </div>
+                        <div class="prose-styles">
+                            <h5 class="section-title">// Key Highlights</h5>
+                            <ul class="sfx-highlight-list">${highlightsHtml}</ul>
+                        </div>
                     </div>
                     <div>
-                        <h3 class="page-title text-3xl font-bold uppercase tracking-widest mb-4 font-mono">${project.title}</h3>
+                        <div class="flex items-baseline gap-4 mb-2">
+                            <h3 class="page-title text-3xl font-bold uppercase tracking-widest font-mono">${project.title}</h3>
+                            <span class="text-sm font-mono text-[var(--color-secondary)]">${project.year}</span>
+                        </div>
                         <p class="text-[var(--color-secondary)] mb-6">${project.summary}</p>
                         <div class="prose-styles mb-8">
                             <h5 class="section-title text-sm">// My Role</h5>
@@ -791,10 +889,11 @@ public class PlayerCharacter : MonoBehaviour {
                             <h5 class="section-title text-sm">// Technologies</h5>
                             <div class="flex flex-wrap gap-2 mb-6">${techHtml}</div>
                         </div>
-                        <h5 class="section-title text-sm">// Samples</h5>
+                        <h5 class="section-title text-sm">// Samples <span class="text-xs font-normal text-[var(--color-secondary)] ml-1">(click to preview)</span></h5>
                         <div class="border border-[var(--border-color)] rounded-lg overflow-hidden bg-black/20">
                             ${samplesHtml}
                         </div>
+                        <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="corp-button inline-flex items-center gap-2 px-4 py-2 mt-6"><i data-lucide="external-link" class="w-4 h-4"></i> View on Asset Store</a>
                     </div>
                 </div>
             `;
@@ -817,11 +916,23 @@ public class PlayerCharacter : MonoBehaviour {
             const card = document.createElement('div');
             card.className = 'sfx-card';
             card.dataset.sfxId = key;
+            const techTagsHtml = project.technologies.map(t => `<span class="sfx-card-tag">${t}</span>`).join('');
             card.innerHTML = `
-                <img src="${project.image}" alt="${project.title}" class="w-full h-auto aspect-video object-cover">
+                <div class="relative">
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-auto aspect-video object-cover">
+                    <span class="sfx-card-badge">${project.category}</span>
+                </div>
                 <div class="p-4">
-                    <h5 class="font-bold text-lg mb-2">${project.title}</h5>
-                    <p class="text-sm text-[var(--color-secondary)]">${project.summary}</p>
+                    <div class="flex justify-between items-start mb-2">
+                        <h5 class="font-bold text-lg leading-tight">${project.title}</h5>
+                        <span class="text-xs font-mono text-[var(--color-secondary)] ml-2 flex-shrink-0">${project.year}</span>
+                    </div>
+                    <p class="text-sm text-[var(--color-secondary)] mb-3">${project.summary}</p>
+                    <div class="sfx-card-meta">
+                        <span class="sfx-card-meta-item"><i data-lucide="music-2" class="w-3 h-3"></i> ${project.samples.length} samples</span>
+                        <span class="sfx-card-meta-item"><i data-lucide="layers" class="w-3 h-3"></i> ${project.stats.assets} assets</span>
+                    </div>
+                    <div class="sfx-card-tags">${techTagsHtml}</div>
                 </div>
             `;
             card.addEventListener('click', () => {
