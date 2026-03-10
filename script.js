@@ -377,6 +377,11 @@ public class PlayerCharacter : MonoBehaviour {
             technologies: ["Unity", "FMOD", "Audacity"],
             link: "https://assetstore.unity.com/packages/templates/systems/fps-engine-218594",
             stats: { assets: "60+", categories: "5", format: "WAV / 16-bit" },
+            toolBreakdown: [
+                { tool: "FMOD Studio", role: "Spatial Audio & Occlusion", notes: "All weapons and footsteps were bused through FMOD's 3D spatializer with per-weapon-class distance attenuation curves. Occlusion geometry was configured so gunshots audibly muffle when fired behind cover." },
+                { tool: "Audacity", role: "Multi-Layer Alignment & Editing", notes: "Used for sample-precise editing — aligning multi-layer gunshot components (crack, body, tail) to sub-millisecond accuracy and trimming silence from raw foley takes." },
+                { tool: "Unity Audio Mixer", role: "Four-Bus Mixer Architecture", notes: "Built a structured Weapons / Foley / Voice / Environment bus layout with parallel compression on the Weapons bus for consistent loudness even during rapid-fire sequences." }
+            ],
             highlights: [
                 "Multi-layered weapon audio: transient crack, weighted body, and environmental tail",
                 "Surface-responsive footstep system across 5 distinct material types",
@@ -388,7 +393,10 @@ public class PlayerCharacter : MonoBehaviour {
                 { id: 'fps-reload', name: 'Pistol Reload', desc: 'Magazine eject and snap-in mechanics' },
                 { id: 'fps-footstep', name: 'Footstep — Concrete', desc: 'Hard surface foley with subtle reverb' },
                 { id: 'fps-empty', name: 'Empty Magazine Click', desc: 'Mechanical click on an empty chamber' },
-                { id: 'fps-land', name: 'Heavy Land Impact', desc: 'Body impact sound on a solid surface' }
+                { id: 'fps-land', name: 'Heavy Land Impact', desc: 'Body impact sound on a solid surface' },
+                { id: 'fps-handling', name: 'Weapon Handling', desc: 'Subtle grip creak and rattle — idle holding feedback' },
+                { id: 'fps-hit-marker', name: 'Hit Confirmation', desc: 'Crisp high-frequency tick — target acknowledged' },
+                { id: 'fps-ambient', name: 'Combat Zone Ambiance', desc: 'Distant battle texture for spatial situational awareness' }
             ]
         },
         'cowsins-inventory': {
@@ -402,6 +410,10 @@ public class PlayerCharacter : MonoBehaviour {
             technologies: ["Unity", "Audacity"],
             link: "https://assetstore.unity.com/packages/templates/systems/inventory-pro-add-on-for-fps-engine-318131",
             stats: { assets: "25+", categories: "3", format: "WAV / 16-bit" },
+            toolBreakdown: [
+                { tool: "Audacity", role: "Synthesis & Design", notes: "All UI sounds were synthesized directly in Audacity using Generate > Tone and Generate > Chirp, then processed with equalization and normalization to achieve a consistent synthesized palette." },
+                { tool: "Unity Audio Mixer", role: "Zero-Latency UI Bus", notes: "UI sounds were routed to a dedicated bus that bypasses spatial processing entirely — guaranteeing immediate, synchronous audio feedback on every click event regardless of scene state." }
+            ],
             highlights: [
                 "Consistent synthesized palette across all UI event types",
                 "Ascending pitch language for positive actions; descending for negative feedback",
@@ -413,7 +425,10 @@ public class PlayerCharacter : MonoBehaviour {
                 { id: 'inv-click', name: 'UI Click', desc: 'Crisp, short click for menu navigation' },
                 { id: 'inv-drop', name: 'Item Drop', desc: 'Soft descending tone for item placement' },
                 { id: 'inv-equip', name: 'Gear Equip', desc: 'Layered click-chime for equipping items' },
-                { id: 'inv-fail', name: 'Action Failed', desc: 'Low dissonant buzz for invalid actions' }
+                { id: 'inv-fail', name: 'Action Failed', desc: 'Low dissonant buzz for invalid actions' },
+                { id: 'inv-sort', name: 'Item Sort', desc: 'Rapid click sequence — items stacking in grid' },
+                { id: 'inv-open', name: 'Panel Open', desc: 'Whoosh with metallic click — UI panel slide-in' },
+                { id: 'inv-close', name: 'Panel Close', desc: 'Reverse click with soft decay — UI dismiss' }
             ]
         },
         'cowsins-save-load': {
@@ -427,6 +442,10 @@ public class PlayerCharacter : MonoBehaviour {
             technologies: ["Unity", "Audacity"],
             link: "https://assetstore.unity.com/packages/templates/systems/save-load-add-on-for-fps-engine-316848",
             stats: { assets: "15+", categories: "2", format: "WAV / 16-bit" },
+            toolBreakdown: [
+                { tool: "Audacity", role: "Synthesis & Reverb Shaping", notes: "All cues were synthesized using the Tone Generator, then shaped with a custom short-plate reverb effect to give every UI cue the same subtle digital resonance — auditory glue for the whole palette." },
+                { tool: "Unity Audio Mixer", role: "Priority-Override System Bus", notes: "Save/Load cues are routed to a System Audio bus with priority override settings, ensuring they are never ducked or masked by combat or gameplay audio events." }
+            ],
             highlights: [
                 "Distinct audio states for initiate, success, loading, and error conditions",
                 "Ascending chime language for positive feedback; dissonant tones for errors",
@@ -438,7 +457,10 @@ public class PlayerCharacter : MonoBehaviour {
                 { id: 'save-success', name: 'Save Complete', desc: 'Full resolved chord — save confirmed' },
                 { id: 'save-confirm', name: 'UI Confirm', desc: 'Sharp high note — generic UI confirmation' },
                 { id: 'save-load', name: 'Load Begin', desc: 'Rising melodic arc — world transition start' },
-                { id: 'save-error', name: 'Error Alert', desc: 'Low dissonant two-tone — operation failed' }
+                { id: 'save-error', name: 'Error Alert', desc: 'Low dissonant two-tone — operation failed' },
+                { id: 'save-autosave', name: 'Auto-Save Tick', desc: 'Subtle soft tick — passive background activity' },
+                { id: 'save-warning', name: 'Low Space Warning', desc: 'Repeating low pulse — persistent alert signal' },
+                { id: 'save-transition', name: 'Scene Transition', desc: 'Rising tone sweep — world-space change indicator' }
             ]
         },
         'platformer-engine': {
@@ -452,6 +474,11 @@ public class PlayerCharacter : MonoBehaviour {
             technologies: ["Unity", "FMOD", "Audacity"],
             link: "https://assetstore.unity.com/packages/templates/systems/platformer-engine-2d-2-5d-266973",
             stats: { assets: "40+", categories: "6", format: "WAV / 16-bit" },
+            toolBreakdown: [
+                { tool: "FMOD Studio", role: "Pitch Randomization", notes: "Every high-repetition sound (footsteps, coin collect, jump) was wired to an FMOD pitch randomizer (±2 semitones) to prevent listener fatigue without sacrificing the chiptune character." },
+                { tool: "Audacity", role: "Pure Waveform Synthesis", notes: "All chiptune sounds were built from raw waveforms (square, triangle, sawtooth) synthesized in Audacity — no hardware emulation plugins. Every sample is mathematically clean, true to 16-bit hardware constraints." },
+                { tool: "Unity Audio Mixer", role: "Retro Processing Chain", notes: "Applied Unity's built-in Chorus and Distortion effects on the Chiptune bus to add subtle warmth and lo-fi character, reinforcing the retro aesthetic without deviating from the source material." }
+            ],
             highlights: [
                 "Pure chiptune synthesis — square, triangle, and sawtooth waveforms throughout",
                 "Procedural pitch variation prevents listener fatigue on repeated sounds",
@@ -463,7 +490,142 @@ public class PlayerCharacter : MonoBehaviour {
                 { id: 'plat-coin', name: 'Coin Collect', desc: 'Bright two-note chime — immediately satisfying' },
                 { id: 'plat-hit', name: 'Enemy Hit', desc: 'Pink noise burst with pitched impact punch' },
                 { id: 'plat-powerup', name: 'Power-Up Collect', desc: 'Ascending arpeggio — reward confirmation' },
-                { id: 'plat-death', name: 'Player Death', desc: 'Descending chromatic glide — classic game over cue' }
+                { id: 'plat-death', name: 'Player Death', desc: 'Descending chromatic glide — classic game over cue' },
+                { id: 'plat-level-complete', name: 'Level Complete', desc: 'Short melodic fanfare — celebratory stage clear' },
+                { id: 'plat-run', name: 'Running Footstep', desc: 'Rapid chiptune percussion — rhythmic movement loop' },
+                { id: 'plat-wall-jump', name: 'Wall Jump', desc: 'Quick ascending chip-tone with surface tap layer' }
+            ]
+        },
+        'horror-atmosphere': {
+            title: "Horror Atmosphere Pack",
+            category: "Horror / Atmosphere",
+            year: "2024",
+            summary: "A spine-chilling collection of atmospheric dread, creature vocalizations, and cinematic jump-scare stings built for immersive horror game experiences.",
+            image: "https://placehold.co/600x338/1a0000/cc2200?text=Horror+Atmosphere+Pack",
+            role: "I crafted every element of the horror soundscape from scratch — from sustained infrasonic tension drones and granular-processed heartbeats to creature vocalizations built using layered synthesis and pitch-shifted source recordings. Each asset was engineered to trigger a primal response without overusing cheap shock tactics.",
+            thoughtProcess: "Effective horror audio works on two levels: the conscious and the subconscious. Infrasonic content (below 20 Hz) creates physical unease that the player can't name — they just feel wrong. Layered above that, I used granular re-synthesis to produce organic, unpredictable textures that keep the listener permanently on edge — the brain is hard-wired to focus on irregular, evolving patterns as potential threats. The jump-scare sting was the most carefully engineered asset: it uses an intentional 300ms window of near-silence to lower the listener's guard, followed by a multi-layered impact — white noise burst, sub-frequency thump, and a dissonant high-frequency shriek — all timed to maximise the startle response. Every asset shares a large-stone-room reverb tail to enforce a consistent sense of vast, cold space.",
+            technologies: ["Reaper", "iZotope RX", "FMOD", "Audacity"],
+            link: "#",
+            stats: { assets: "50+", categories: "6", format: "WAV / 24-bit" },
+            toolBreakdown: [
+                { tool: "Reaper", role: "DAW & Mastering Chain", notes: "Primary session host for all multi-track layering and automation. The mastering chain used a custom LUFS-targeted limiter to deliver assets at -14 LUFS — loud enough for impact but leaving headroom for game engine dynamics." },
+                { tool: "iZotope RX 10", role: "Spectral Repair & Sound Design", notes: "Used Spectral Repair and the Spectral Editor to morph recorded source material into unrecognisable textures. The creature growl was sculpted from a combination of field recordings processed beyond recognition using spectral painting." },
+                { tool: "FMOD Studio", role: "Adaptive Intensity Routing", notes: "Built a tension-level parameter tree — ambiance layers cross-fade based on a continuous 0–1 'dread' parameter driven by player proximity to scripted events. Jump-scare stings are triggered via FMOD command instruments for frame-accurate timing." },
+                { tool: "Audacity", role: "Batch Export & Format Conversion", notes: "Fast batch-normalisation, sample-precise fade trimming, and final export pipeline for all 50+ assets to 24-bit WAV delivery format." }
+            ],
+            highlights: [
+                "Infrasonic drone layers (sub-20 Hz) engineered for physical, subconscious unease",
+                "Granular re-synthesis textures that evolve organically, defeating listener habituation",
+                "Jump-scare architecture: 300ms pre-silence, multi-layer impact, controlled decay",
+                "All assets tuned to a shared large-stone-room reverb tail for cohesive world acoustics"
+            ],
+            samples: [
+                { id: 'horror-heartbeat', name: 'Dread Heartbeat', desc: 'Pitched-down pulse with sub-bass rumble layer' },
+                { id: 'horror-creature', name: 'Creature Growl', desc: 'Layered synthesis vocalization — deep and inhuman' },
+                { id: 'horror-jumpscare', name: 'Jump Scare Sting', desc: 'Pre-silence → noise burst → dissonant shriek' },
+                { id: 'horror-drone', name: 'Dark Ambiance Drone', desc: 'Sustained infrasonic-layered tension atmosphere' },
+                { id: 'horror-door', name: 'Creaking Door', desc: 'Metal resonance sweep with decaying reverb tail' },
+                { id: 'horror-impact', name: 'Body Impact', desc: 'Low-frequency thud with layered metallic clang' },
+                { id: 'horror-whisper', name: 'Whisper Layer', desc: 'Granular-processed vocal texture — barely intelligible' }
+            ]
+        },
+        'rpg-character': {
+            title: "RPG Character Sound Pack",
+            category: "RPG / Adventure",
+            year: "2024",
+            summary: "A comprehensive RPG audio library covering spell casting, melee combat, character foley, and narrative reward cues for fantasy game worlds.",
+            image: "https://placehold.co/600x338/0d0026/9b59b6?text=RPG+Character+Pack",
+            role: "Designed and produced a full-spectrum RPG audio library with a consistent fantasy tone — magical but grounded. My approach centred on building a coherent audio language: spells share a harmonic signature, weapons have weight and material realism, and reward cues (level-up, quest complete) use memorable melodic hooks that players consciously associate with progression.",
+            thoughtProcess: "RPG audio must balance fantasy and physicality. A fire spell should feel magical, but the whoosh, crackle, and energy charge that precede it are grounded in real-world physics — combustion, air displacement, electrostatic build-up. I achieved this by layering a synthesized 'magical shimmer' on top of physically accurate synthesis layers. For melee combat, I studied the acoustics of real metal-on-metal contact: steel swords produce a sharp, bright clang with a high-frequency ring that decays exponentially — I replicated this using FM synthesis with rapid attack and tuned resonance frequency. The 'level-up' fanfare was the most musically considered asset: it uses a rising perfect-fourth interval followed by a major chord resolution — the same intervallic pattern found in iconic RPG fanfares — hardwired into player memory as a reward cue.",
+            technologies: ["Reaper", "FMOD", "Kontakt", "Audacity"],
+            link: "#",
+            stats: { assets: "80+", categories: "7", format: "WAV / 24-bit" },
+            toolBreakdown: [
+                { tool: "Reaper", role: "DAW & Session Management", notes: "All recording sessions, layer automation, send effects, and the full mastering chain were built in Reaper for maximum routing flexibility. Spell layers (charge, whoosh, release) were mixed as separate Reaper tracks with independent automation." },
+                { tool: "Native Instruments Kontakt 7", role: "Orchestral & Foley Sampling", notes: "Used Kontakt's scripting engine to build a randomized sword-impact instrument — each hit triggers one of 8 round-robin samples at a randomized pitch offset, eliminating the machine-gun effect during rapid combat." },
+                { tool: "FMOD Studio", role: "Interactive Audio Logic", notes: "Built real-time parameter logic for spell intensity scaling (weak/medium/strong cast variants), combo-count pitch variation for sword hits, and adaptive combat music layering tied to enemy proximity." },
+                { tool: "Audacity", role: "Source Audio Pre-processing", notes: "Pre-processing pipeline for all foley source recordings — removing background noise, normalising transients, and trimming to loop-point before import into Reaper for final design." }
+            ],
+            highlights: [
+                "Unified 'magical shimmer' harmonic signature across all spell-type assets for audio branding",
+                "FM synthesis replication of metal-on-metal acoustics — realistic ring decay without physical sampling",
+                "Level-up fanfare uses the perfect-fourth interval resolution pattern wired into gamer memory",
+                "Round-robin Kontakt instrument for sword hits eliminates machine-gun repetition effect"
+            ],
+            samples: [
+                { id: 'rpg-spell', name: 'Spell Cast', desc: 'Harmonic shimmer charge → whoosh → energy release' },
+                { id: 'rpg-sword', name: 'Sword Clash', desc: 'FM-synthesized metal ring with exponential decay' },
+                { id: 'rpg-levelup', name: 'Level Up Fanfare', desc: 'Perfect-fourth rising arc with major chord resolution' },
+                { id: 'rpg-potion', name: 'Potion Use', desc: 'Liquid glug with ascending pitch-shift sparkle tail' },
+                { id: 'rpg-footstep', name: 'Footstep (Grass)', desc: 'Soft layered crunch — organic and spatially grounded' },
+                { id: 'rpg-chest', name: 'Chest Open', desc: 'Creak layer with reward chime — treasure discovered' },
+                { id: 'rpg-quest', name: 'Quest Complete', desc: 'Triumphant arpeggio with orchestral chord swell' }
+            ]
+        },
+        'vehicle-racing': {
+            title: "Vehicle & Racing Sound Pack",
+            category: "Racing / Action",
+            year: "2023",
+            summary: "A high-octane vehicle audio pack featuring seamlessly looping engine stems, doppler-tuned collision impacts, tire foley, and turbo boost cues built for Unity's audio system.",
+            image: "https://placehold.co/600x338/001a33/f39c12?text=Vehicle+%26+Racing+Pack",
+            role: "I produced a complete vehicle audio suite covering engine states (idle, mid-rev, full-throttle), tire physics (screech, roll, skid), collision impacts, and turbo boost effects. All engine assets were designed as seamless FMOD stems that blend in real time based on the game's RPM and speed parameters — the player hears a continuously evolving engine that responds to their exact throttle inputs.",
+            thoughtProcess: "Vehicle audio is one of the most technically demanding areas of game sound design because the assets must be engineered for dynamic blending — the idle, mid-rev, and full-throttle sounds are separate stems that FMOD interpolates between based on a continuous RPM float parameter. I modelled each engine state as an independent synthesis patch: the idle uses a detuned sawtooth with low-frequency tremolo to simulate cylinder irregularity; the mid-rev tightens the harmonic content and increases the pulse rate; the full-throttle is a complex multi-oscillator patch with controlled distortion. For collision impacts, I applied layered physics: a low-frequency 'crunch' (metal bending), a mid-frequency 'crack' (fracture point), and a high-frequency 'ring' (surface resonance), all timed in rapid succession to simulate the acoustic reality of a high-speed impact.",
+            technologies: ["Reaper", "FMOD", "Unity", "Audacity"],
+            link: "#",
+            stats: { assets: "45+", categories: "5", format: "WAV / 16-bit" },
+            toolBreakdown: [
+                { tool: "Reaper", role: "Loop Design & Analysis", notes: "All engine loops were built and loop-point perfected in Reaper. Used spectral analysis tools to identify and align zero-crossing points — ensuring completely click-free seamless looping at any tempo." },
+                { tool: "FMOD Studio", role: "RPM Parameter Routing", notes: "Built the RPM-to-audio parameter tree that cross-fades engine idle, mid, and rev stems in real time. Unity sends a 0–1 normalised float from the vehicle physics component; FMOD translates this into the multi-stem blend." },
+                { tool: "Unity Audio Mixer", role: "Doppler & Spatialization", notes: "Configured Unity's built-in Audio Source doppler effect, custom distance falloff curves, and reverb zone sends for tunnels and garages — each environment type has its own reverb zone preset." },
+                { tool: "Audacity", role: "Distortion & Tonal EQ", notes: "Processing pipeline for adding controlled odd-harmonic distortion to raw engine tones and applying high-shelf boosts to emphasise the mechanical top-end character that makes game vehicle audio feel exciting." }
+            ],
+            highlights: [
+                "Engine audio engineered as blendable FMOD stems — idle, mid-rev, and full-throttle seamlessly interpolated",
+                "Collision impact layering: crunch (bend) + crack (fracture) + ring (resonance) — modelled on real impact physics",
+                "Doppler parameters pre-tuned to Unity's built-in Audio Source spatial audio system",
+                "All loops zero-crossing verified for click-free seamless playback at any RPM"
+            ],
+            samples: [
+                { id: 'vehicle-idle', name: 'Engine Idle', desc: 'Detuned sawtooth with low-frequency tremolo — idle state' },
+                { id: 'vehicle-rev', name: 'Engine Rev', desc: 'Multi-oscillator harmonic sweep — throttle response' },
+                { id: 'vehicle-screech', name: 'Tire Screech', desc: 'Filtered noise sweep with pitch-bending arc' },
+                { id: 'vehicle-collision', name: 'Vehicle Collision', desc: 'Layered crunch → crack → metallic ring impact' },
+                { id: 'vehicle-turbo', name: 'Turbo Boost', desc: 'Rising frequency whistle with air-rush noise layer' },
+                { id: 'vehicle-horn', name: 'Car Horn', desc: 'Detuned square-wave chord — harsh and immediate' },
+                { id: 'vehicle-crash', name: 'Crash Impact', desc: 'High-energy full-frequency collision with debris scatter' }
+            ]
+        },
+        'ambient-environment': {
+            title: "Nature & Environment Pack",
+            category: "Ambient / Environment",
+            year: "2022",
+            summary: "A rich library of natural ambiance loops — wind, rain, forest, cave, ocean — designed as seamless multi-stem Unity AudioSource layers for open-world and adventure games.",
+            image: "https://placehold.co/600x338/001a0d/2ecc71?text=Nature+%26+Environment+Pack",
+            role: "I produced a complete environmental audio library using a hybrid workflow: location sound captured on a portable field recorder, cleaned in iZotope RX, then blended with synthesized extension layers to go beyond the limitations of a single recording session. Each ambiance is a multi-stem composition — base atmosphere, mid-range detail, and foreground event layers — designed for adaptive blending in Unity via FMOD.",
+            thoughtProcess: "Environmental ambiance is often the most underappreciated element of game audio, yet it does the heaviest lifting in world-building. My foundational principle is the 'figure-ground' model from music composition: the ambiance is the canvas, not the painting — it must never demand attention, only contextualise it. For the forest ambiance, I built three independent stems: a continuous low wind rustle (the 'ground'), randomized bird call one-shots triggered by FMOD's Scatterer module (the 'figure'), and a mid-range leaf movement layer (the 'texture'). Rain synthesis uses pink noise as its base — matching the spectral distribution of real rainfall — with a shaped LFO modulation layer simulating wind gusts. Cave drips use the acoustic principle of reflection delay: each drip has a subtle reverb tail sized to match the implied space of the game level.",
+            technologies: ["Reaper", "iZotope RX", "FMOD", "Audacity"],
+            link: "#",
+            stats: { assets: "55+", categories: "8", format: "WAV / 24-bit" },
+            toolBreakdown: [
+                { tool: "Reaper", role: "Multi-Stem Session Mixing", notes: "Each environment is built as a 3–5 stem Reaper session. Loop points are defined by zero-crossing analysis — the result is ambiances that loop every 60–120 seconds with no perceptible seam." },
+                { tool: "iZotope RX 10", role: "Field Recording Cleanup", notes: "Removed wind rumble, HVAC hum, and distant traffic from all field recordings. Spectral Repair was used to fill gaps where transient noise contaminated otherwise clean takes, preserving every usable second of location audio." },
+                { tool: "FMOD Studio", role: "Scatterer & Zone Transitions", notes: "Used FMOD's Scatterer instrument for randomised bird calls, insect chirps, and weather events. Built smooth zone-transition logic — interior and exterior ambiance layers crossfade over 4 seconds when the player crosses a threshold trigger." },
+                { tool: "Audacity", role: "LUFS Normalisation & Batch Export", notes: "Batch-applied loudness normalisation (targeting -23 LUFS for ambiances, -18 LUFS for event cues) and converted all 55+ source files to 24-bit WAV for delivery packaging." }
+            ],
+            highlights: [
+                "Figure-ground design philosophy: ambiances contextualise the world without demanding attention",
+                "Three-stem architecture per environment (base, texture, event) for fully adaptive FMOD mixing",
+                "Rain synthesis uses spectrally-accurate pink noise with LFO gust modulation layer",
+                "Cave reverb tails calibrated to implied room volume — separate presets for small, medium, and large spaces"
+            ],
+            samples: [
+                { id: 'amb-wind', name: 'Wind Rustle', desc: 'Pink noise with gentle LFO frequency modulation' },
+                { id: 'amb-rain', name: 'Rain on Leaves', desc: 'Spectrally-shaped pink noise with gust LFO layer' },
+                { id: 'amb-forest', name: 'Forest Ambiance', desc: 'Three-stem blend: wind base, leaf texture, bird events' },
+                { id: 'amb-cave', name: 'Cave Drips', desc: 'Pitched water drops with calibrated reflection delay' },
+                { id: 'amb-thunder', name: 'Distant Thunder', desc: 'Low rumble sweep with long natural decay tail' },
+                { id: 'amb-fire', name: 'Campfire Crackle', desc: 'Pink noise with random amplitude spikes — fire texture' },
+                { id: 'amb-ocean', name: 'Ocean Waves', desc: 'Filtered noise swell with rhythmic amplitude envelope' }
             ]
         }
     };
@@ -672,6 +834,207 @@ public class PlayerCharacter : MonoBehaviour {
                 const deathSynth = new Tone.Synth({ oscillator: { type: 'square' }, envelope: { attack: 0.001, decay: 0.12, sustain: 0, release: 0 } }).toDestination();
                 ['B4','Bb4','A4','Ab4','G4','F#4','F4','E4'].forEach((note, i) => deathSynth.triggerAttackRelease(note, "16n", now + i * 0.09));
                 break;
+            case 'plat-level-complete':
+                const lvlSynth = new Tone.Synth({ oscillator: { type: 'square' }, envelope: { attack: 0.001, decay: 0.1, sustain: 0.05, release: 0.05 } }).toDestination();
+                ['C5','E5','G5','C6','E6','G6','C7'].forEach((note, i) => lvlSynth.triggerAttackRelease(note, "16n", now + i * 0.08));
+                break;
+            case 'plat-run':
+                const runSynth = new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.001, decay: 0.04, sustain: 0 } }).toDestination();
+                [0, 0.1, 0.2, 0.3].forEach(t => runSynth.triggerAttackRelease("32n", now + t));
+                break;
+            case 'plat-wall-jump':
+                const wjSynth = new Tone.Synth({ oscillator: { type: 'square' }, envelope: { attack: 0.001, decay: 0.08, sustain: 0, release: 0 } }).toDestination();
+                new Tone.MetalSynth({ frequency: 500, envelope: { attack: 0.001, decay: 0.05, release: 0.01 }, harmonicity: 3, modulationIndex: 8, resonance: 600, octaves: 0.4 }).toDestination().triggerAttackRelease("A3", "32n", now);
+                wjSynth.triggerAttackRelease("E5", "16n", now + 0.02);
+                wjSynth.frequency.rampTo("B5", 0.12, now + 0.02);
+                break;
+            // FPS extended
+            case 'fps-handling':
+                new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.005, decay: 0.06, sustain: 0 } }).toDestination().triggerAttackRelease("32n", now, 0.3);
+                new Tone.MetalSynth({ frequency: 800, envelope: { attack: 0.001, decay: 0.04, release: 0.01 }, harmonicity: 4, modulationIndex: 6, resonance: 1200, octaves: 0.3 }).toDestination().triggerAttackRelease("F4", "32n", now + 0.05, 0.4);
+                break;
+            case 'fps-hit-marker':
+                new Tone.Synth({ oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 0.04, sustain: 0, release: 0 } }).toDestination().triggerAttackRelease("C7", "64n", now, 0.9);
+                break;
+            case 'fps-ambient':
+                new Tone.NoiseSynth({ noise: { type: 'brown' }, envelope: { attack: 0.3, decay: 0.8, sustain: 0.05, release: 0.5 } }).toDestination().triggerAttackRelease("2n", now, 0.25);
+                break;
+            // Inventory extended
+            case 'inv-sort':
+                [0, 0.06, 0.12].forEach(t => new Tone.MetalSynth({ frequency: 350, envelope: { attack: 0.001, decay: 0.04, release: 0.01 }, harmonicity: 3, modulationIndex: 5, resonance: 500, octaves: 0.3 }).toDestination().triggerAttackRelease("A3", "32n", now + t, 0.7));
+                break;
+            case 'inv-open':
+                new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.02, decay: 0.12, sustain: 0 } }).toDestination().triggerAttackRelease("8n", now, 0.5);
+                synth.triggerAttackRelease("G5", "32n", now + 0.1);
+                break;
+            case 'inv-close':
+                synth.triggerAttackRelease("D5", "32n", now);
+                new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.001, decay: 0.08, sustain: 0 } }).toDestination().triggerAttackRelease("16n", now + 0.04, 0.35);
+                break;
+            // Save/Load extended
+            case 'save-autosave':
+                new Tone.Synth({ oscillator: { type: 'sine' }, envelope: { attack: 0.005, decay: 0.08, sustain: 0, release: 0 } }).toDestination().triggerAttackRelease("A6", "32n", now, 0.4);
+                break;
+            case 'save-warning':
+                synth.triggerAttackRelease("D4", "16n", now, 0.8);
+                synth.triggerAttackRelease("D4", "16n", now + 0.28, 0.8);
+                break;
+            case 'save-transition':
+                const transSynth = new Tone.Synth({ oscillator: { type: 'sine' }, envelope: { attack: 0.05, decay: 0.4, sustain: 0.1, release: 0.3 } }).toDestination();
+                transSynth.triggerAttackRelease("C4", "4n", now, 0.7);
+                transSynth.frequency.rampTo("C6", 0.5, now);
+                break;
+            // Horror
+            case 'horror-heartbeat':
+                new Tone.NoiseSynth({ noise: { type: 'brown' }, envelope: { attack: 0.01, decay: 0.3, sustain: 0 } }).toDestination().triggerAttackRelease("8n", now);
+                synth.triggerAttackRelease("C1", "8n", now, 0.7);
+                new Tone.NoiseSynth({ noise: { type: 'brown' }, envelope: { attack: 0.01, decay: 0.2, sustain: 0 } }).toDestination().triggerAttackRelease("8n", now + 0.36);
+                synth.triggerAttackRelease("C1", "16n", now + 0.36, 0.5);
+                break;
+            case 'horror-creature':
+                const grwlSynth = new Tone.Synth({ oscillator: { type: 'sawtooth' }, envelope: { attack: 0.12, decay: 0.5, sustain: 0.2, release: 0.4 } }).toDestination();
+                grwlSynth.triggerAttackRelease("C2", "4n", now, 0.8);
+                grwlSynth.frequency.rampTo("G1", 0.45, now);
+                new Tone.NoiseSynth({ noise: { type: 'pink' }, envelope: { attack: 0.1, decay: 0.5, sustain: 0.1, release: 0.3 } }).toDestination().triggerAttackRelease("4n", now, 0.4);
+                break;
+            case 'horror-jumpscare':
+                new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.001, decay: 0.35, sustain: 0 } }).toDestination().triggerAttackRelease("4n", now + 0.1, 1.0);
+                synth.triggerAttackRelease("C1", "4n", now + 0.1, 0.9);
+                const shriekSynth = new Tone.Synth({ oscillator: { type: 'sawtooth' }, envelope: { attack: 0.001, decay: 0.5, sustain: 0, release: 0 } }).toDestination();
+                shriekSynth.triggerAttackRelease("B7", "4n", now + 0.12, 0.7);
+                break;
+            case 'horror-drone':
+                const droneSynth = new Tone.Synth({ oscillator: { type: 'sine' }, envelope: { attack: 0.4, decay: 0.5, sustain: 0.5, release: 0.8 } }).toDestination();
+                droneSynth.triggerAttackRelease("C2", "2n", now, 0.6);
+                new Tone.NoiseSynth({ noise: { type: 'brown' }, envelope: { attack: 0.3, decay: 1.0, sustain: 0.2, release: 0.5 } }).toDestination().triggerAttackRelease("2n", now, 0.15);
+                break;
+            case 'horror-door':
+                const doorSynth = new Tone.Synth({ oscillator: { type: 'sawtooth' }, envelope: { attack: 0.05, decay: 0.6, sustain: 0.1, release: 0.5 } }).toDestination();
+                doorSynth.triggerAttackRelease("F2", "4n", now, 0.5);
+                doorSynth.frequency.rampTo("C3", 0.4, now);
+                new Tone.NoiseSynth({ noise: { type: 'pink' }, envelope: { attack: 0.02, decay: 0.4, sustain: 0.05, release: 0.3 } }).toDestination().triggerAttackRelease("4n", now, 0.3);
+                break;
+            case 'horror-impact':
+                new Tone.NoiseSynth({ noise: { type: 'brown' }, envelope: { attack: 0.001, decay: 0.35, sustain: 0 } }).toDestination().triggerAttackRelease("8n", now, 0.9);
+                synth.triggerAttackRelease("C1", "8n", now, 0.8);
+                new Tone.MetalSynth({ frequency: 200, envelope: { attack: 0.001, decay: 0.25, release: 0.1 }, harmonicity: 4, modulationIndex: 16, resonance: 2000, octaves: 1.0 }).toDestination().triggerAttackRelease("G2", "8n", now + 0.02);
+                break;
+            case 'horror-whisper':
+                new Tone.NoiseSynth({ noise: { type: 'pink' }, envelope: { attack: 0.2, decay: 0.6, sustain: 0.2, release: 0.5 } }).toDestination().triggerAttackRelease("4n", now, 0.2);
+                new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.05, decay: 0.4, sustain: 0.1, release: 0.3 } }).toDestination().triggerAttackRelease("4n", now, 0.08);
+                break;
+            // RPG
+            case 'rpg-spell':
+                const spellCharge = new Tone.Synth({ oscillator: { type: 'sine' }, envelope: { attack: 0.08, decay: 0.2, sustain: 0.3, release: 0.2 } }).toDestination();
+                spellCharge.triggerAttackRelease("G4", "8n", now, 0.5);
+                spellCharge.frequency.rampTo("E6", 0.18, now);
+                new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.01, decay: 0.2, sustain: 0 } }).toDestination().triggerAttackRelease("8n", now + 0.22, 0.7);
+                synth.triggerAttackRelease(["C5","E5","G5"], "8n", now + 0.26, 0.8);
+                break;
+            case 'rpg-sword':
+                new Tone.MetalSynth({ frequency: 300, envelope: { attack: 0.001, decay: 0.35, release: 0.15 }, harmonicity: 5.5, modulationIndex: 24, resonance: 3500, octaves: 1.8 }).toDestination().triggerAttackRelease("D3", "8n", now);
+                new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.001, decay: 0.08, sustain: 0 } }).toDestination().triggerAttackRelease("16n", now, 0.6);
+                break;
+            case 'rpg-levelup':
+                const lvlupSynth = new Tone.Synth({ oscillator: { type: 'triangle' }, envelope: { attack: 0.001, decay: 0.12, sustain: 0.05, release: 0.08 } }).toDestination();
+                ['G4','C5','E5','G5','C6'].forEach((note, i) => lvlupSynth.triggerAttackRelease(note, "8n", now + i * 0.1));
+                synth.triggerAttackRelease(["C5","E5","G5","C6"], "4n", now + 0.55, 0.9);
+                break;
+            case 'rpg-potion':
+                const potSynth = new Tone.Synth({ oscillator: { type: 'sine' }, envelope: { attack: 0.01, decay: 0.08, sustain: 0.05, release: 0.05 } }).toDestination();
+                ['G5','A5','B5','D6','G6'].forEach((note, i) => potSynth.triggerAttackRelease(note, "32n", now + i * 0.055));
+                new Tone.NoiseSynth({ noise: { type: 'pink' }, envelope: { attack: 0.02, decay: 0.15, sustain: 0 } }).toDestination().triggerAttackRelease("8n", now, 0.25);
+                break;
+            case 'rpg-footstep':
+                new Tone.NoiseSynth({ noise: { type: 'pink' }, envelope: { attack: 0.005, decay: 0.1, sustain: 0 } }).toDestination().triggerAttackRelease("16n", now, 0.6);
+                synth.triggerAttackRelease("E3", "32n", now, 0.3);
+                break;
+            case 'rpg-chest':
+                const chestSynth = new Tone.Synth({ oscillator: { type: 'sawtooth' }, envelope: { attack: 0.02, decay: 0.2, sustain: 0.05, release: 0.1 } }).toDestination();
+                chestSynth.triggerAttackRelease("C3", "8n", now, 0.5);
+                new Tone.MetalSynth({ frequency: 400, envelope: { attack: 0.001, decay: 0.1, release: 0.05 }, harmonicity: 3, modulationIndex: 8, resonance: 800, octaves: 0.6 }).toDestination().triggerAttackRelease("G3", "8n", now + 0.08);
+                synth.triggerAttackRelease(["E5","G5","B5"], "8n", now + 0.2, 0.7);
+                break;
+            case 'rpg-quest':
+                const questSynth = new Tone.Synth({ oscillator: { type: 'triangle' }, envelope: { attack: 0.001, decay: 0.1, sustain: 0.05, release: 0.06 } }).toDestination();
+                ['C5','E5','G5','C6','E6','G6'].forEach((note, i) => questSynth.triggerAttackRelease(note, "16n", now + i * 0.09));
+                synth.triggerAttackRelease(["C5","E5","G5","C6"], "2n", now + 0.6, 0.85);
+                break;
+            // Vehicle / Racing
+            case 'vehicle-idle':
+                const idleSynth = new Tone.Synth({ oscillator: { type: 'sawtooth' }, envelope: { attack: 0.1, decay: 0.3, sustain: 0.6, release: 0.4 } }).toDestination();
+                idleSynth.triggerAttackRelease("A1", "4n", now, 0.7);
+                const idleSynth2 = new Tone.Synth({ oscillator: { type: 'sawtooth' }, envelope: { attack: 0.1, decay: 0.3, sustain: 0.6, release: 0.4 } }).toDestination();
+                idleSynth2.triggerAttackRelease("A#1", "4n", now, 0.4);
+                break;
+            case 'vehicle-rev':
+                const revSynth = new Tone.Synth({ oscillator: { type: 'sawtooth' }, envelope: { attack: 0.05, decay: 0.5, sustain: 0.3, release: 0.4 } }).toDestination();
+                revSynth.triggerAttackRelease("A1", "4n", now, 0.8);
+                revSynth.frequency.rampTo("A3", 0.4, now);
+                new Tone.NoiseSynth({ noise: { type: 'brown' }, envelope: { attack: 0.05, decay: 0.4, sustain: 0.1, release: 0.2 } }).toDestination().triggerAttackRelease("4n", now, 0.3);
+                break;
+            case 'vehicle-screech':
+                const screechSynth = new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.02, decay: 0.5, sustain: 0.1, release: 0.3 } }).toDestination();
+                screechSynth.triggerAttackRelease("4n", now, 0.8);
+                const scrPitch = new Tone.Synth({ oscillator: { type: 'sawtooth' }, envelope: { attack: 0.02, decay: 0.4, sustain: 0.05, release: 0.2 } }).toDestination();
+                scrPitch.triggerAttackRelease("F4", "4n", now, 0.4);
+                scrPitch.frequency.rampTo("C3", 0.35, now);
+                break;
+            case 'vehicle-collision':
+                new Tone.NoiseSynth({ noise: { type: 'brown' }, envelope: { attack: 0.001, decay: 0.4, sustain: 0 } }).toDestination().triggerAttackRelease("4n", now, 1.0);
+                synth.triggerAttackRelease("C1", "8n", now, 0.9);
+                new Tone.MetalSynth({ frequency: 180, envelope: { attack: 0.001, decay: 0.5, release: 0.2 }, harmonicity: 6, modulationIndex: 20, resonance: 2500, octaves: 1.5 }).toDestination().triggerAttackRelease("D2", "8n", now + 0.03);
+                new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.001, decay: 0.2, sustain: 0 } }).toDestination().triggerAttackRelease("8n", now + 0.04, 0.6);
+                break;
+            case 'vehicle-turbo':
+                const turboSynth = new Tone.Synth({ oscillator: { type: 'sawtooth' }, envelope: { attack: 0.06, decay: 0.5, sustain: 0.2, release: 0.3 } }).toDestination();
+                turboSynth.triggerAttackRelease("C3", "4n", now, 0.7);
+                turboSynth.frequency.rampTo("G5", 0.4, now);
+                new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.05, decay: 0.4, sustain: 0.05, release: 0.2 } }).toDestination().triggerAttackRelease("4n", now, 0.4);
+                break;
+            case 'vehicle-horn':
+                const hornSynth = new Tone.Synth({ oscillator: { type: 'square' }, envelope: { attack: 0.01, decay: 0.05, sustain: 0.8, release: 0.15 } }).toDestination();
+                hornSynth.triggerAttackRelease("Bb3", "8n", now, 0.9);
+                const hornSynth2 = new Tone.Synth({ oscillator: { type: 'square' }, envelope: { attack: 0.01, decay: 0.05, sustain: 0.8, release: 0.15 } }).toDestination();
+                hornSynth2.triggerAttackRelease("F3", "8n", now, 0.7);
+                break;
+            case 'vehicle-crash':
+                new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.001, decay: 0.6, sustain: 0 } }).toDestination().triggerAttackRelease("4n", now, 1.0);
+                new Tone.NoiseSynth({ noise: { type: 'brown' }, envelope: { attack: 0.001, decay: 0.7, sustain: 0 } }).toDestination().triggerAttackRelease("4n", now, 0.9);
+                synth.triggerAttackRelease("C1", "4n", now, 1.0);
+                new Tone.MetalSynth({ frequency: 120, envelope: { attack: 0.001, decay: 0.6, release: 0.3 }, harmonicity: 8, modulationIndex: 28, resonance: 3000, octaves: 2.0 }).toDestination().triggerAttackRelease("G1", "4n", now + 0.02);
+                break;
+            // Ambient / Environment
+            case 'amb-wind':
+                new Tone.NoiseSynth({ noise: { type: 'pink' }, envelope: { attack: 0.5, decay: 0.8, sustain: 0.3, release: 0.6 } }).toDestination().triggerAttackRelease("2n", now, 0.35);
+                break;
+            case 'amb-rain':
+                new Tone.NoiseSynth({ noise: { type: 'pink' }, envelope: { attack: 0.2, decay: 1.0, sustain: 0.4, release: 0.5 } }).toDestination().triggerAttackRelease("2n", now, 0.5);
+                new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.1, decay: 0.8, sustain: 0.15, release: 0.4 } }).toDestination().triggerAttackRelease("2n", now, 0.15);
+                break;
+            case 'amb-forest':
+                new Tone.NoiseSynth({ noise: { type: 'pink' }, envelope: { attack: 0.3, decay: 0.8, sustain: 0.3, release: 0.5 } }).toDestination().triggerAttackRelease("2n", now, 0.2);
+                const birdSynth = new Tone.Synth({ oscillator: { type: 'sine' }, envelope: { attack: 0.02, decay: 0.08, sustain: 0.05, release: 0.06 } }).toDestination();
+                ['G6','A6','G6','B6'].forEach((note, i) => birdSynth.triggerAttackRelease(note, "32n", now + 0.3 + i * 0.07));
+                break;
+            case 'amb-cave':
+                const dripSynth = new Tone.Synth({ oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 0.35, sustain: 0, release: 0.2 } }).toDestination();
+                dripSynth.triggerAttackRelease("G5", "8n", now, 0.6);
+                dripSynth.triggerAttackRelease("D5", "8n", now + 0.6, 0.4);
+                break;
+            case 'amb-thunder':
+                const thunderSynth = new Tone.NoiseSynth({ noise: { type: 'brown' }, envelope: { attack: 0.02, decay: 1.2, sustain: 0.05, release: 0.8 } }).toDestination();
+                thunderSynth.triggerAttackRelease("1n", now, 0.7);
+                synth.triggerAttackRelease("C1", "4n", now, 0.5);
+                break;
+            case 'amb-fire':
+                new Tone.NoiseSynth({ noise: { type: 'pink' }, envelope: { attack: 0.1, decay: 0.8, sustain: 0.3, release: 0.5 } }).toDestination().triggerAttackRelease("2n", now, 0.4);
+                [0.1, 0.25, 0.42, 0.58, 0.71].forEach(t => new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.001, decay: 0.05, sustain: 0 } }).toDestination().triggerAttackRelease("32n", now + t, 0.3));
+                break;
+            case 'amb-ocean':
+                const waveSynth = new Tone.NoiseSynth({ noise: { type: 'pink' }, envelope: { attack: 0.6, decay: 1.0, sustain: 0.2, release: 0.8 } }).toDestination();
+                waveSynth.triggerAttackRelease("1n", now, 0.55);
+                break;
         }
     };
 
@@ -838,6 +1201,19 @@ public class PlayerCharacter : MonoBehaviour {
             detailContainer.innerHTML = '';
 
             const techHtml = project.technologies.map(tech => `<span class="border border-[var(--border-color)] rounded-full px-3 py-1 text-sm">${tech}</span>`).join('');
+            const toolBreakdownHtml = project.toolBreakdown ? `
+                <h5 class="section-title text-sm">// Professional Toolchain</h5>
+                <div class="sfx-tool-breakdown mb-6">
+                    ${project.toolBreakdown.map(item => `
+                        <div class="sfx-tool-item">
+                            <div class="sfx-tool-header">
+                                <span class="sfx-tool-name">${item.tool}</span>
+                                <span class="sfx-tool-role">${item.role}</span>
+                            </div>
+                            <p class="sfx-tool-notes">${item.notes}</p>
+                        </div>
+                    `).join('')}
+                </div>` : '';
             const samplesHtml = project.samples.map(sample => `
                 <div class="sfx-sample-item">
                     <div class="sfx-sample-info">
@@ -889,6 +1265,7 @@ public class PlayerCharacter : MonoBehaviour {
                             <h5 class="section-title text-sm">// Technologies</h5>
                             <div class="flex flex-wrap gap-2 mb-6">${techHtml}</div>
                         </div>
+                        ${toolBreakdownHtml}
                         <h5 class="section-title text-sm">// Samples <span class="text-xs font-normal text-[var(--color-secondary)] ml-1">(click to preview)</span></h5>
                         <div class="border border-[var(--border-color)] rounded-lg overflow-hidden bg-black/20">
                             ${samplesHtml}

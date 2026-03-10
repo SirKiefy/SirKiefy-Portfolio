@@ -453,6 +453,47 @@ header { position: relative; }
     transform: scale(1.1);
 }
 
+/* SFX Tool Breakdown */
+.sfx-tool-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+.sfx-tool-item {
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--color-accent);
+    background: rgba(0,0,0,0.18);
+    padding: 0.65rem 0.9rem;
+    border-radius: 2px;
+}
+.sfx-tool-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.3rem;
+}
+.sfx-tool-name {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--color-accent);
+    letter-spacing: 0.04em;
+}
+.sfx-tool-role {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--color-primary);
+    opacity: 0.75;
+    letter-spacing: 0.03em;
+}
+.sfx-tool-notes {
+    font-size: 0.78rem;
+    color: var(--color-secondary);
+    line-height: 1.55;
+    margin: 0;
+}
+
 /* --- CODE PAGE --- */
 .code-study-card {
     border: 1px solid var(--border-color);
